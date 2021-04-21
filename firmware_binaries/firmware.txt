@@ -1,0 +1,285 @@
+Changelog
+=========
+
+V0.3.5 (OpenGD77 Phase 1 - Update 5):
+- Updated the timing of the RX/TX switching to exactly match the start of timeslot window.
+<work in progress>
+
+V0.3.4 (OpenGD77 Phase 1 - Update 4):
+- Cleanup.
+- Additional stuff by Roger Clark, VK3KYY / G4KYF and Colin Durbridge, G4EML:
+  - Changes for All Channels Zone and Direct Channel Access. (Colin Durbridge, G4EML)
+  - Change CTCSS Selection Method: Select CTCSS Tones from a list of valid tones. (Colin Durbridge, G4EML)
+  - Fix for EEPROM write delay problem, from Colin G4EML. Removed the 5ms delay after EEPROM write in fw_usb_com.c as that should now also be redundant.
+  - Fix for menu system data inconsistency.
+  - Added hotspot mode (work in progress), currently disabled.
+  - Added USB_DEBUG_PRINT.
+
+V0.3.3 (OpenGD77 Phase 1 - Update 3):
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - Fix issue with incorrect maximum number of channels per zone.
+  - Improvement for bug when number of Zones is less than 3 (which is the number of lines on the screen). Note this is not the ideal fix in terms of GUI design, but is better than it was before.
+  - Bug fix from Colin G4ELM for the FM green Rx led permanently on, sometimes when switching from DMR to FM.
+  - Add Tx timeout, from value in the codeplug. Tx timer now counts up if TOT is not defined or down from the TOT value is it is defined, and Tx is terminated after the timeout period.
+
+V0.3.2 (OpenGD77 Phase 1 - Update 2):
+- Fixed a bug where DMR RX stopped working due to internally incorrect bandwidth handling.
+- Reset HR-C6000 state every time when calibration is done (this avoids affected FM mode after DMR TX).
+- Silence packets at end of transmission to avoid "TX blip".
+
+V0.3.1 (OpenGD77 Phase 1 - Update 1):
+- Cleanup / comments / refactoring.
+- VFO screen should have the same initialization order as channel screen.
+- Fixed some AT1846S settings.
+- Take care of bandwidth for filter_band_sel + band_mode_sel in trxSetFrequency.
+- Take care of bandwidth for modu_det_sel (SQ setting) in FM mode.
+- Take care of mode for dac_vgain_analog and volume_analog.
+- Take care of bandwidth for xmitter_dev, noise1_th, noise2_th, rssi3_th and squelch_th.
+- Cleanup AT1846FMSettings from values that get set elsewhere, reordered remaining AT1846FMSettings and AT1846DMRSettings.
+- Added DMR mode specific modu_det_sel (SQ setting) to AT1846DMRSettings.
+- Added DMR mode specific FM deviation to AT1846DMRSettings.
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - More improvements to Green key on menu screens.
+  - Fix for bug #29.
+  - Update name in comm port driver, to OpenGD77.
+  - Changed frequency range checking, so that Rx freq is only limited to the radio hardware limits, but Tx is limited to Amateur bands (in menuTxScreen.c).
+
+V0.3 (OpenGD77 Phase 1):
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - Added battery percentage display to VFO and Channel screens and made changes elsewhere to support this, including menuBattery.c.
+  - Add squelch to the nonVolatileSettings and use it in fw_trx.c.
+  - Fix bug where mode changes, via the star button, on both the Channel and VFO screen are reverted after the end of the next transmission.
+  - Improve menu system by returning to the home screen in most screens when the green button is pressed.
+
+-----------------------------------
+Moved to https://github.com/hamdv/OpenGD77 !!!
+-----------------------------------
+
+V0.2.4 (OpenGD77 Phase 1 - Release Candidate 1):
+- Bumped STORAGE_MAGIC_NUMBER because it went down inbetween.
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - Added FontConverter source and binary, to convert RaysFontEditor 8x16 bitmap fonts, for use with the UC1701 display. Note: The converter needs to be improved to handle other font sizes.
+  - Increase FM audio volume, as suggested by Colin G4EML.
+  - Improved FM Rx filter settings from Colin G4EML.
+  - Add Colin G4EML to the credits screen.
+  - Fix problem if when the firmware is initially run, VFO A is set to FM Analog and may have invalid DMR setting, also fixed a related problem to initial freq being set to 400Mhz as this is the CPS VFO default.
+  - Add support for FM Rx/TxCTCSS, from Colin G4EML.
+  - Use PIT on Tx Screen to fix time keeping, and also change counter to count up instead of down.
+  - Add support for 25 or 12.5kHz bandwidth on analogue / FM.
+  - Fix warning about implicit declaration of trxSetTxCTCSS().
+  - In Analog mode, turn on the green LED and also the backlight when there is a signal is received.
+  - Add Channel details (view only) screen.
+  - Change battery screen to update once per second.
+  - Added CTCSS number entry into the Channel Details screen.
+  - Added CTCSS tone indication onto screen header next to FM when CTCSS is enabled , by displaying the text 'CT' to the right of the 'FM' text.
+  - Fixed bug found by Colin G4EML, where changes to the channel data in Channel mode were being overwritten when the Channel screen reloaded.
+  - Move nonVolatileSettings storage location from 0xFF00 to 0x6000 as 0x6000 seems to be a hole in the memory map which the CPS does not upload to, even with the worst case / maximal codeplug.
+
+V0.2.3:
+- Added frequency and band dependent HR-C6000 calibration parameters.
+- License for ComTool: GPL v2 + non-commercial.
+- DMR RX colour code filtering to the currently selected CC.
+- Better comments on RX/TX sequence, cleanup, refactoring.
+- Additional startup steps in TX sequence.
+- LCSS=0 in TX sequence.
+- Tweaked TX sequence.
+- Gone back to original firmware values for better consistency. We'll update them later on (DMR mode / analog mode) anyway.
+- Added frequency and band dependent AT1846S calibration parameters.
+- Fixed the calibration frequency ranges.
+- Refactored calculation of calibration frequency ranges.
+- Added missing condition to support turning calibration off in trxUpdateAT1846SCalibration too.
+- Added missing AT1846S calibration parameter for squelch_th.
+- txPower now intialized to about original firmware LOW.
+- More optimization of the TX sequence.
+- Explicitly handle TX interrupts.
+- TX with pulsed PA.
+- Seperate activate/deactivate TX.
+- Optimized TX start/stop timing for DMR and analog.
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - Add windows comm port driver installer.
+  - Changed maximum PA drive level so that max power is around 4.9W on 2m and 3W on 70cm + increase max allowable Tx power a little to allow testers more flexibility.
+  - Change AT1846 functions to use data tables of register settings, to make it easier to change and more compact.
+  - Save the override TG in the settings.
+  - Increase LastHeard history from 8 to 16 after a request from a tester.
+  - Fix problem with the Zone menu, where Zones deleted by the CPS still appeared in the list, also changed the Zone menu screen to fix a bug caused the first zone name to be initially shown for all Zones.
+  - Add support for DMR Colour Code (affects both Tx and Rx).
+  - Add Utilities menu option to enable or disable the calibration system.
+  - Swap position of Tx and Rx freqs on the VFO screen.
+  - Changed VFO functionality, as suggested by Colin G4EML. Changing Rx freq also changes Tx freq so offet is retained. Changing Tx freq only changes the Tx freq.
+  - Improve Talker Alias display, by putting only the callsign on the first TA display line.
+  - Fix codeplug channel read issue for channel index > 256.
+
+V0.2.2:
+- Update TG even if the DMRID did not change.
+- Bumped STORAGE_MAGIC_NUMBER to get rid of some intialization issues.
+- License for OpenGD77: GPL v2 + non-commercial.
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - Fix bug where setting the Tx freq in the VFO screen, also set the currently received frequency of the hardware (AT1846S).
+  - Started to implement T/Rx bandwidth control. But still need to work out how to read the bandwidth from the codeplug.
+  - Change Channel screen Orange button operation to be the same as VFO menu, also if a Zone is selected, the root menu is changed to the Channel screen, because Zones are only useful in Channel mode.
+  - Added Factory Reset option to the debug screen, also renamed the Debug screen to Utilities (note, I'll rename the menuDebug.c in the next commit, so the git commit history makes more sense.
+
+V0.2.1:
+- Fixed a bug where a very short TX would break RX afterwards.
+- Fixed a bug where low battery prevents power off.
+- Don't start TX while ongoing RX.
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - Re-organise menuChannel so that the TG is displayed in same postion on both screens, also stop displaying the TG when in Analog mode.
+  - Added Boot 'Line1' and 'Line2' to the Splash screen, changed firmware into and power off screen.
+  - Remove debug log and squelch indication from the screen.
+  - Added Credits screen.
+  - Various changes to the operation of the VFO system and VFO screen etc.
+  - Use contact name from codeplug in VFO screen (same as Channel screen).
+
+V0.2:
+- Added DAC support.
+- PTT enabled: switch between TX and RX, different settings for analog/digital TX, changed digital voice gain.
+- DMR TX (TX packet sequence with empty voice packets only, currently no mic->codec->voice data).
+- Removed all optimization for now to avoid running into any unwanted issues while developing the core functionality.
+- Cleanup, refactoring.
+- Stop TX voice sequence immediately when TX stops.
+- I2S mic audio ADC from HR-C6000.
+- Init and call the AMBE codec (TX encoding, TX ECC handling). (Copyright disclaimer: THIS IS NOT THE AMBE CODEC ITSELF! IT IS ONLY A STUB THAT CALLS INTO THE ORIGINAL FIRMWARE CODE!)
+- Exit the send sequence keeping the correct timeslot for the stop packet.
+- Added delays for txstart and txstop to ensure that the transmission is not cut off.
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - Manually optimised the sending the decoded audio stream to the HR-C6000 I2S.
+  - Added Talker Alias support, onto the Channel and VFO screens.
+  - Added basic support for Talker Alias on the Last Heard screen.
+  - Fix for caller details not appearing under some conditions.
+  - Changes so that the Last Heard screen should update when additional TA data is received.
+  - Enhancements to Tx functionality. Read DMR ID from legacy codeplug. Set Tx TG from Channel screen. Also implement setting of Tx TG from numerical entry screen.
+  - Fix bug on LastHeard screen where TA data was being displayed when there was none.
+  - Added Tx power to the nonvolatile settings, also started to add support for calibration etc.
+  - Changed HR-C6000 state machine to use named enums, to make the code easier to understand.
+  - Fix problem where DMR Rx would not work after transmitting in DMR mode.
+  - Limit power setting to value of 2000 which equates to approximately 4W. Also don't immediately set the DAC output power level when setting the Tx power, because its possible that the DAC power level control voltage should be zero when not transmitting.
+  - Updated Splash and Firmware info screens, with name change to OpenGD-77.
+  - Changed to using channel data struct for the VFO. Reduced number of VFO's to 1. Changed Tx screen to use the Tx freq from the current channel - this may be the VFO or a codeplug channel.
+
+V0.1.1:
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - Displayoptions backlight optimization.
+  - Fix issue on Channel mode screen, where the Star key did not change the mode.
+  - Change screen header to show mode in the middle rather than battery voltage.
+  - Possible fix for audio breakup bug. Also put debugging tests on keypad buttons 1 to 4
+  - Fixed problem with menuDisplayList crashing after use of RSSI screen.
+  - Fixed bug on lastheard screen.
+  - Some compilation optimization.
+  - Added GD77_FirmwareLoader.exe to the tools and as possible post-build step.
+  - Optimized audio buffer processing to only use the left channel of the I2C DAC.
+
+V0.1:
+- Extended watchdog to look for all tasks.
+- Removed old menu system.
+- Removed old edit system.
+- Cosmetic / cleanup / refactoring / optimization.
+- Additional stuff by Roger Clark, VK3KYY / G4KYF:
+  - New display library.
+  - New menu/edit system.
+  - PIT counter.
+  - Modified startup sound.
+  - Squelch optimization.
+  - Better FM filter handling.
+  - SPI flash optimization.
+  - Some compilation optimization.
+  - Store qsodata seems to report DMR ID of 0x4ED1E7 when it miss interprets a late start.
+  - Added debug options control screen for Sq and log.
+  - Added basic countdown timer to Tx screen, as proof of concept.
+  - Added PWM control of LED backlight + menu screen for Display Options.
+
+V0.0.1e:
+- Optimized filter setting to improve DMR sensitivity.
+- Simplified frequency system.
+- Store multiple frequencies as array, use right/left to cycle them.
+- Load settings from EEPROM at startup, save settings to EEPROM at shutdown.
+- Added watchdog.
+- Added ADC support.
+- Added battery monitoring.
+- Block startup when low battery, go into safe pre-shutdown mode when running and low battery.
+- Improved critical sections.
+- Changed clock settings to reflect the GD-77 external oscillators frequency of 12,288 MHz resulting in the MCU having a 122,88 MHz system clock.
+- Added a periodic interrupt timer (PIT) with a tick rate of 100us and some counters to get used by the tasks.
+- I2C/SPI is now blocking and threadsafe.
+- Don't interfere when sound is playing.
+- Don't show flags while startup or shutdown.
+- Added critical section to remove race condition.
+- Added HR-C6000 interrupt timeout to avoid interrupt hangup due to missed packets.
+- Added new tasks for HR-C6000 and watchdog, tasks timing is controlled by the periodic interrupt timer (PIT).
+- Reorganized tasks to fit into the new PIT controlled task structure, adjusted timings.
+
+V0.0.1d:
+- Proper muting of speaker in analog and digital mode.
+- Added TG and DMRID display.
+- Integrated new SPI flash library written by Roger Clark VK3KYY / G4KYF.
+- Integrated new EEPROM library written by Roger Clark VK3KYY / G4KYF.
+- Firmware support for external flash and EEPROM read/write.
+- ComTool support for external flash and EEPROM read/write.
+- Integrated DMRID lookup stuff written by Roger Clark VK3KYY / G4KYF.
+
+V0.0.1c:
+- Optimized the packet handling algorithm again.
+- RTT optimization.
+- Added tool to create *.dat files.
+- More detailed packet logging.
+
+V0.0.1b:
+- Don't check for sc anymore.
+- Changed packet handling.
+- Check for rpi==0.
+- Skip some data at late entry.
+- Added better reinit of codec and HR-C6000.
+- Added better RX LED handling.
+
+V0.0.1a:
+- Improved transmission timeout handling.
+- Added another transmission starting condition.
+- Improved checking for correct received packets.
+
+V0.0.1:
+- Support for I2C, SPI and I2S (with DMA).
+- Support for AT1846.
+- Support for HR-C6000.
+- Pin definitions and initialization for I2C, SPI, I2S, AT1846, HR-C6000 and some common pins.
+- Added beep task for sounds.
+- Added key and buttons sounds.
+- Added melody system + startup melody + hidden melodies.
+- Added data structure for mode (anlog/DMR), band (VHF/UHF) and frequency.
+- Made mode, band and frequency editable.
+    - Frequency is checked to stay in band range (VHF: 144 MHz - 146 MHz / UHF: 430 MHz - 440 MHz).
+    - Use digit keys to enter frequency.
+    - Left key is backspace.
+    - Green key is ok (partially entered frequency will get padded with zeros).
+    - Red key is cancel.
+    - Up/down keys step frequency by +/- 12.5 KHz.
+    - Star key toggles mode analog/DMR.
+    - Hash key toggles band VHF/UHF.
+    - Keys have special sounds for ok, cancel and wrong frequency.
+- Display shows mode, band and frequency.
+- Added additional default mode "Silent".
+- Australian bandwith limits for the time beeing.
+- Added functionality for FM analog mode.
+- Added squelch for analog mode (with open/shut option via menu).
+- Linker magic and data files for codec reuse (the data files contain only dummy data to avoid copyright issues).
+- MCU+PC part of comtool.
+- HR-C6000 DMR interrupt stuff.
+- MCU+PC part of packet data logging stuff.
+- Added basic HR-C6000 packet receive handling for DMR mode.
+- Added HR-C6000 packet data logging.
+- Added menu option to enable/disable HR-C6000 datalogging.
+- Display the flags (squelch, datalogging) that can be changed via menu.
+- Added transmission state machine with start/stop/interrupt/lateentry logic.
+- Added soundbuffer system that continously sends data via SAI/EDMA SPI/I2S to the HR-C6000.
+- Took some uncritical AMBE support stuff (rewritten RX ECC handling) from https://github.com/szechyjs/dsd and https://github.com/szechyjs/mbelib.
+- Init and call the AMBE codec (RX decoding). (Copyright disclaimer: THIS IS NOT THE AMBE CODEC ITSELF! IT IS ONLY A STUB THAT CALLS INTO THE ORIGINAL FIRMWARE CODE!)
+- Added additional lateinit stuff (AT1846S + HR-C6000).
+
+initial version:
+- MCUXpresso start project for new firmware containing hopefully all necessary dependencies.
+- Support for buttons, LEDs, keyboard and display.
+- Timed splash screen at power on.
+- Timed shutdown screen at power off.
+- Power off gets interrupted by just turning power on again.
+- Display light stays on for 4 seconds when something happens on the display.
+- Multilevel menu system with example structure. Enter/Exit Menu with SK2, navigate menu with up/down/left/right.
+- COM port (compatible to existing Windows 10 driver) gets detected when programming cable is attached to PC.

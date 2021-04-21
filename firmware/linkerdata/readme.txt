@@ -1,0 +1,2 @@
+To avoid potential copyright issues, the codec binary files are not included in this repository. 
+Before building the project you must run the codec_dat_files_creator.exe which will download, decrypt and install these files.

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+OS=`uname -s`
+MODEL=""
+FILENAME=""
+
+for e in "$@"; do
+    case "$e" in
+	"DM-1801")
+	    MODEL="-m DM-1801"
+	    ;;
+	"GD-77S")
+	    MODEL="-m GD-77S"
+	    ;;
+	"RD-5R")
+	    MODEL="-m RD-5R"
+	    ;;
+	*)
+	    FILENAME="-f $e"
+	    ;;
+    esac
+done
+
+case "$OS" in
+    "Linux")
+	../tools/bin2sgl.Linux $MODEL $FILENAME
+	;;
+    "Darwin")
+	../tools/bin2sgl.Darwin $MODEL $FILENAME
+	;;
+    *)
+	;;
+esac
