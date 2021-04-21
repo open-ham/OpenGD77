@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>OpenGD77 / OpenGD77S / OpenDM1801 / OpenRD5R 用户指南</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <p><img src="file:///e:\GD77_clone\docs\media\OpenGD77-logo.png" alt=""></p>
+<h1 id="opengd77--opengd77s--opendm1801--openrd5r-用户指南">OpenGD77 / OpenGD77S / OpenDM1801 / OpenRD5R 用户指南</h1>
+<p>翻译：BH4ESK<br>
+校对：BG5IPF</p>
+<p>获取最新消息或与我们讨论，请到我们的官方论坛 <a href="https://opengd77.com">https://opengd77.com</a></p>
+<!-- TOC titleSize:2 tabSpaces:2 depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 skip:0 title:1 charForUnorderedList:* -->
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#opengd77--opengd77s--opendm1801--openrd5r-%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97">OpenGD77 / OpenGD77S / OpenDM1801 / OpenRD5R 用户指南</a>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a>
+<ul>
+<li><a href="#%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%E4%B8%8E%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90">下载链接与其他资源</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E7%94%B5%E5%8F%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6codeplug%E5%85%BC%E5%AE%B9%E6%80%A7">电台配置文件（Codeplug）兼容性</a></li>
+<li><a href="#%E4%B8%8D%E5%90%8C%E7%94%B5%E5%8F%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%9B%BA%E4%BB%B6%E5%B7%AE%E5%BC%82">不同电台之间的固件差异</a></li>
+<li><a href="#%E4%B8%BB%E5%B1%8F%E5%B9%95%E9%A2%91%E7%8E%87%E4%B8%8E%E4%BF%A1%E9%81%93%E7%95%8C%E9%9D%A2">主屏幕（频率与信道界面）</a>
+<ul>
+<li><a href="#%E5%9C%A8%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%95%B0%E5%AD%97%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%97%B4%E5%88%87%E6%8D%A2">在模拟与数字模式之间切换</a></li>
+<li><a href="#%E5%9C%A8dmr%E6%A8%A1%E5%BC%8F%E4%B8%8B%E5%88%87%E6%8D%A2%E6%97%B6%E9%9A%99">在DMR模式下切换时隙</a></li>
+<li><a href="#%E6%8E%A7%E5%88%B6%E5%8F%91%E5%B0%84%E5%8A%9F%E7%8E%87">控制发射功率</a></li>
+<li><a href="#%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%9D%A1s%E8%A1%A8">信号强度条（S表）</a></li>
+<li><a href="#%E4%BF%A1%E9%81%93%E7%95%8C%E9%9D%A2%E7%9A%84%E7%89%B9%E6%AE%8A%E5%8A%9F%E8%83%BD">信道界面的特殊功能</a>
+<ul>
+<li><a href="#%E5%9C%A8%E5%BD%93%E5%89%8D%E5%8C%BA%E5%9F%9F%E5%86%85%E5%88%87%E6%8D%A2%E4%BF%A1%E9%81%93">在当前区域内切换信道</a></li>
+<li><a href="#%E6%94%B9%E5%8F%98%E5%8C%BA%E5%9F%9F">改变区域</a></li>
+</ul>
+</li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E4%BF%A1%E9%81%93%E9%A2%91%E7%8E%87">显示信道频率</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BAfm%E6%A8%A1%E5%BC%8F%E5%85%B7%E4%BD%93%E4%BF%A1%E9%81%93%E4%BF%A1%E6%81%AF">显示FM模式具体信道信息</a></li>
+<li><a href="#%E4%B8%8A%E8%A1%8C%E7%9B%91%E5%90%AC%E5%8A%9F%E8%83%BD">上行监听功能</a>
+<ul>
+<li><a href="#%E4%BF%A1%E9%81%93%E7%95%8C%E9%9D%A2%E5%BF%AB%E6%8D%B7%E8%8F%9C%E5%8D%95">信道界面快捷菜单</a>
+<ul>
+<li><a href="#%E6%8B%B7%E8%B4%9D%E4%B8%80%E4%B8%AA%E4%BF%A1%E9%81%93%E9%85%8D%E7%BD%AE%E8%87%B3vfochannel----vfo">拷贝一个信道配置至VFO（Channel --&gt; VFO）</a></li>
+<li><a href="#%E5%B0%86vfo%E4%BF%A1%E6%81%AF%E5%86%99%E5%85%A5%E5%BD%93%E5%89%8D%E4%BF%A1%E9%81%93vfo----channel">将VFO信息写入当前信道（VFO --&gt; Channel）</a></li>
+<li><a href="#%E8%BF%87%E6%BB%A4%E5%99%A8%E8%AE%BE%E7%BD%AEfilter">过滤器设置（Filter）</a>
+<ul>
+<li><a href="#fm%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%BF%87%E6%BB%A4%E8%AE%BE%E7%BD%AE%E5%93%91%E9%9F%B3">FM模式的过滤设置（哑音）</a></li>
+<li><a href="#dmr%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%BF%87%E6%BB%A4%E8%AE%BE%E7%BD%AE">DMR模式的过滤设置</a></li>
+</ul>
+</li>
+<li><a href="#%E8%89%B2%E7%A0%81%E8%BF%87%E6%BB%A4cc-filter%E4%BB%85%E9%99%90dmr%E6%A8%A1%E5%BC%8F">色码过滤（CC Filter）（仅限DMR模式）</a></li>
+<li><a href="#%E6%97%B6%E9%9A%99%E8%BF%87%E6%BB%A4ts-filter%E4%BB%85%E9%99%90dmr%E6%A8%A1%E5%BC%8F">时隙过滤（TS Filter）（仅限DMR模式）</a></li>
+</ul>
+</li>
+<li><a href="#vfo%E7%95%8C%E9%9D%A2%E5%BF%AB%E6%8D%B7%E8%8F%9C%E5%8D%95">VFO界面快捷菜单</a>
+<ul>
+<li><a href="#%E9%80%89%E6%8B%A9vfo-ab">选择VFO A/B</a></li>
+<li><a href="#%E4%BA%A4%E6%8D%A2%E6%8E%A5%E6%94%B6%E4%B8%8E%E5%8F%91%E5%B0%84%E9%A2%91%E7%8E%87tx----rx">交换接收与发射频率（Tx &lt;--&gt; Rx）</a></li>
+<li><a href="#%E5%B0%86%E6%8E%A5%E6%94%B6%E9%A2%91%E7%8E%87%E6%8B%B7%E8%B4%9D%E8%87%B3%E5%8F%91%E5%B0%84%E9%A2%91%E7%8E%87rx----tx">将接收频率拷贝至发射频率（Rx --&gt; Tx）</a></li>
+<li><a href="#%E5%B0%86%E5%8F%91%E5%B0%84%E9%A2%91%E7%8E%87%E6%8B%B7%E8%B4%9D%E8%87%B3%E6%8E%A5%E6%94%B6%E9%A2%91%E7%8E%87tx----rx">将发射频率拷贝至接收频率（Tx --&gt; Rx）</a></li>
+<li><a href="#%E8%BF%87%E6%BB%A4%E5%99%A8filter%E4%BB%85%E9%99%90dmr%E6%A8%A1%E5%BC%8F">过滤器（Filter）（仅限DMR模式）</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%98%E5%82%A8vfo%E9%85%8D%E7%BD%AE%E8%87%B3%E6%96%B0%E5%BB%BA%E4%BF%A1%E9%81%93vfo----new-chan">存储VFO配置至新建信道（VFO --&gt; New Chan）</a>
+<ul>
+<li><a href="#%E5%93%91%E9%9F%B3%E6%89%AB%E6%8F%8Ftone-scan%E4%BB%85%E9%99%90fm%E6%A8%A1%E5%BC%8F">哑音扫描（Tone Scan）（仅限FM模式）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8Edmr%E6%9C%89%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E5%AE%9A">与DMR有关的一些设定</a>
+<ul>
+<li><a href="#%E6%97%B6%E9%9A%99%E9%80%89%E6%8B%A9">时隙选择</a></li>
+<li><a href="#dmr-id%E5%91%BC%E5%8F%B7%E4%B8%8E%E5%90%8D%E5%AD%97%E6%98%BE%E7%A4%BA">DMR ID、呼号与名字显示</a></li>
+<li><a href="#%E4%B8%BB%E5%8F%AB%E5%88%AB%E5%90%8D%E6%98%BE%E7%A4%BA">主叫别名显示</a></li>
+<li><a href="#%E4%BB%8E%E6%8E%A5%E6%94%B6%E7%BB%84%E5%88%97%E8%A1%A8%E4%B8%AD%E9%80%89%E6%8B%A9%E9%80%9A%E8%AF%9D%E7%BB%84">从接收组列表中选择通话组</a></li>
+<li><a href="#%E4%B8%BA%E8%81%94%E7%B3%BB%E4%BA%BA%E6%88%96%E9%80%9A%E8%AF%9D%E7%BB%84%E6%8C%87%E5%AE%9A%E6%97%B6%E9%9A%99">为联系人或通话组指定时隙</a></li>
+<li><a href="#%E9%80%9A%E8%AF%9D%E7%BB%84%E5%8F%8D%E8%89%B2%E6%98%BE%E7%A4%BA">通话组反色显示</a></li>
+<li><a href="#%E6%89%8B%E5%8A%A8%E8%BE%93%E5%85%A5%E9%80%9A%E8%AF%9D%E7%BB%84%E4%BB%A3%E7%A0%81">手动输入通话组代码</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E5%8D%95%E5%91%BC%E5%8F%B7%E7%A0%81">输入单呼号码</a></li>
+<li><a href="#%E9%80%89%E6%8B%A9%E8%81%94%E7%B3%BB%E4%BA%BA">选择联系人</a></li>
+<li><a href="#%E4%B8%B4%E6%97%B6%E4%BF%AE%E6%94%B9%E6%82%A8%E7%9A%84dmr-id">临时修改您的DMR ID</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8Efm%E6%9C%89%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E5%AE%9A">与FM有关的一些设定</a>
+<ul>
+<li><a href="#%E7%AA%84%E5%B8%A6fm">窄带FM</a></li>
+<li><a href="#%E5%93%91%E9%9F%B3%E8%AE%BE%E7%BD%AE">哑音设置</a></li>
+<li><a href="#%E9%9D%99%E5%99%AA">静噪</a></li>
+<li><a href="#1750hz%E9%9F%B3%E9%A2%91%E8%84%89%E5%86%B2%E5%8F%91%E5%B0%84%E6%93%8D%E4%BD%9C">1750Hz音频脉冲发射操作</a></li>
+<li><a href="#%E5%8F%8C%E9%9F%B3%E5%A4%9A%E9%A2%91dtmf%E5%8F%91%E5%B0%84%E6%93%8D%E4%BD%9C">双音多频（DTMF）发射操作</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8Evfo%E6%9C%89%E5%85%B3%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%BE%E5%AE%9A">与VFO有关的一些设定</a>
+<ul>
+<li><a href="#%E9%A2%91%E7%8E%87%E6%AD%A5%E8%BF%9B">频率步进</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E5%AD%97%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E9%A2%91%E7%8E%87">使用数字键盘输入频率</a></li>
+<li><a href="#%E5%8D%95%E7%8B%AC%E8%B0%83%E6%95%B4%E5%8F%91%E5%B0%84%E9%A2%91%E7%8E%87">单独调整发射频率</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%8F%91%E5%B0%84">发射</a>
+<ul>
+<li><a href="#%E8%B6%85%E6%97%B6%E6%8F%90%E7%A4%BA%E9%9F%B3timeout-beep">超时提示音（Timeout beep）</a></li>
+<li><a href="#%E5%8F%91%E5%B0%84%E8%B6%85%E6%97%B6%E5%AE%9A%E6%97%B6%E5%99%A8tot">发射超时定时器（TOT）</a></li>
+</ul>
+</li>
+<li><a href="#%E6%89%AB%E6%8F%8F%E5%8A%9F%E8%83%BD">扫描功能</a>
+<ul>
+<li><a href="#%E4%BF%A1%E9%81%93%E6%89%AB%E6%8F%8F">信道扫描</a></li>
+<li><a href="#%E9%A2%91%E7%8E%87%E6%89%AB%E6%8F%8F">频率扫描</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E4%BB%96%E7%95%8C%E9%9D%A2">其他界面</a>
+<ul>
+<li><a href="#%E9%94%81%E5%B1%8F%E7%95%8C%E9%9D%A2">锁屏界面</a></li>
+<li><a href="#%E6%96%87%E5%AD%97%E8%BE%93%E5%85%A5%E7%95%8C%E9%9D%A2">文字输入界面</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A7%E5%88%B6%E6%8C%89%E9%94%AE%E4%B8%8E%E6%8C%89%E9%92%AE">控制按键与按钮</a></li>
+<li><a href="#%E8%8F%9C%E5%8D%95%E7%B3%BB%E7%BB%9F">菜单系统</a></li>
+<li><a href="#%E4%B8%BB%E8%8F%9C%E5%8D%95">主菜单</a>
+<ul>
+<li><a href="#%E5%8C%BA%E5%9F%9Fzone">区域（Zone）</a></li>
+<li><a href="#%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6%E6%8C%87%E7%A4%BA%E5%99%A8rssi">信号强度指示器（RSSI）</a></li>
+<li><a href="#%E7%94%B5%E6%B1%A0battery">电池（Battery）</a></li>
+<li><a href="#%E5%9B%9E%E6%BA%AF%E7%95%8C%E9%9D%A2last-heard">回溯界面（Last Heard）</a></li>
+<li><a href="#%E5%9B%BA%E4%BB%B6%E4%BF%A1%E6%81%AFfirmware-info">固件信息（Firmware Info）</a></li>
+<li><a href="#%E9%80%89%E9%A1%B9%E8%AE%BE%E5%AE%9Aoptions">选项设定（Options）</a>
+<ul>
+<li><a href="#%E6%81%A2%E5%A4%8D%E5%87%BA%E5%8E%82%E8%AE%BE%E7%BD%AEfact-reset">恢复出厂设置（Fact Reset）</a></li>
+<li><a href="#%E6%A0%A1%E5%87%86%E5%8F%82%E6%95%B0calibration">校准参数（Calibration）</a></li>
+<li><a href="#%E6%B3%A2%E6%AE%B5%E9%99%90%E5%88%B6band-limits">波段限制（Band Limits）</a></li>
+<li><a href="#%E6%8C%89%E9%94%AE%E9%95%BF%E6%8C%89%E6%97%B6%E9%97%B4key-long">按键长按时间（Key long）</a></li>
+<li><a href="#%E6%8C%89%E9%94%AE%E9%87%8D%E5%A4%8D%E9%80%9F%E5%BA%A6key-rpt">按键重复速度（Key rpt）</a></li>
+<li><a href="#%E6%97%B6%E9%9A%99%E9%A9%BB%E7%95%99%E6%97%B6%E9%97%B4filter-time">时隙驻留时间（Filter time）</a></li>
+<li><a href="#%E6%89%AB%E6%8F%8F%E9%A9%BB%E7%95%99%E6%97%B6%E9%97%B4scan-delay">扫描驻留时间（Scan delay）</a></li>
+<li><a href="#%E6%89%AB%E6%8F%8F%E6%A8%A1%E5%BC%8Fscan-mode">扫描模式（Scan mode）</a></li>
+<li><a href="#uhf%E9%9D%99%E5%99%AAsquelch-uhf">UHF静噪（Squelch UHF）</a></li>
+<li><a href="#220m%E9%9D%99%E5%99%AAsquelch-220">220M静噪（Squelch 220）</a></li>
+<li><a href="#vhf%E9%9D%99%E5%99%AAsquelch-vhf">VHF静噪（Squelch VHF）</a></li>
+<li><a href="#ptt%E4%BF%9D%E6%8C%81ptt-latch">PTT保持（PTT Latch）</a></li>
+<li><a href="#%E7%83%AD%E7%82%B9%E6%A8%A1%E5%BC%8Fhotspot">热点模式（Hotspot）</a></li>
+<li><a href="#%E5%8F%91%E5%B0%84%E5%88%AB%E5%90%8Dta-tx">发射别名（TA Tx）</a></li>
+<li><a href="#%E5%85%81%E8%AE%B8%E5%8D%95%E5%91%BCallow-pc">允许单呼（Allow PC）</a></li>
+</ul>
+</li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E8%AE%BE%E5%AE%9Adisplay-options">显示设定（Display Options）</a>
+<ul>
+<li><a href="#%E8%83%8C%E5%85%89%E4%BA%AE%E5%BA%A6brightness">背光亮度（Brightness）</a></li>
+<li><a href="#%E5%BE%85%E6%9C%BA%E4%BA%AE%E5%BA%A6min-bright">待机亮度（Min Bright）</a></li>
+<li><a href="#%E5%AF%B9%E6%AF%94%E5%BA%A6contrast">对比度（Contrast）</a></li>
+<li><a href="#%E8%83%8C%E5%85%89%E6%A8%A1%E5%BC%8Fdisplay-mode">背光模式（Display mode）</a></li>
+<li><a href="#%E8%83%8C%E5%85%89%E5%BB%B6%E6%97%B6timeout">背光延时（Timeout）</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E9%A2%9C%E8%89%B2%E6%A8%A1%E5%BC%8Fcolour-mode">显示颜色模式（Colour mode）</a></li>
+<li><a href="#%E8%81%94%E7%B3%BB%E4%BA%BA%E6%98%BE%E7%A4%BA%E9%A1%BA%E5%BA%8Forder">联系人显示顺序（Order）</a></li>
+<li><a href="#%E8%81%94%E7%B3%BB%E4%BA%BA%E6%98%BE%E7%A4%BA%E6%96%B9%E5%BC%8Fcontact">联系人显示方式（Contact）</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A3%B0%E9%9F%B3%E8%AE%BE%E5%AE%9Asound-options">声音设定（Sound Options）</a>
+<ul>
+<li><a href="#%E8%B6%85%E6%97%B6%E8%AD%A6%E5%91%8Atimeout-beep">超时警告（Timeout beep）</a></li>
+<li><a href="#%E8%AD%A6%E5%91%8A%E9%9F%B3%E9%87%8Fbeep-volume">警告音量（Beep volume）</a></li>
+<li><a href="#dmr%E6%8F%90%E7%A4%BA%E9%9F%B3dmr-beep">DMR提示音（DMR Beep）</a></li>
+<li><a href="#dmr%E9%BA%A6%E5%85%8B%E9%A3%8E%E5%A2%9E%E7%9B%8Admr-mic">DMR麦克风增益（DMR mic）</a></li>
+<li><a href="#fm%E9%BA%A6%E5%85%8B%E9%A3%8E%E5%A2%9E%E7%9B%8Afm-mic">FM麦克风增益（FM mic）</a></li>
+<li><a href="#vox%E9%98%88%E5%80%BCvox-threshold">VOX阈值（VOX threshold）</a></li>
+<li><a href="#vox%E5%BB%B6%E8%BF%9Fvox-tail">VOX延迟（VOX Tail）</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BF%A1%E9%81%93%E8%AF%A6%E7%BB%86%E8%AE%BE%E7%BD%AEchannel-details">信道详细设置（Channel Details）</a>
+<ul>
+<li><a href="#%E6%8E%A5%E6%94%B6%E9%A2%91%E7%8E%87rx">接收频率（RX）</a></li>
+<li><a href="#%E5%8F%91%E5%B0%84%E9%A2%91%E7%8E%87tx">发射频率（TX）</a></li>
+<li><a href="#%E6%A8%A1%E5%BC%8Fmode">模式（Mode）</a></li>
+<li><a href="#%E8%89%B2%E7%A0%81color-code">色码（Color Code）</a></li>
+<li><a href="#%E6%97%B6%E9%9A%99timeslot">时隙（Timeslot）</a></li>
+<li><a href="#%E6%8E%A5%E6%94%B6%E5%8F%91%E5%B0%84%E7%BB%84txrx-grp">接收/发射组（Tx/RX Grp）</a></li>
+<li><a href="#%E5%8F%91%E5%B0%84%E5%93%91%E9%9F%B3tx-ctcss-or-dcs">发射哑音（Tx CTCSS or DCS）</a></li>
+<li><a href="#%E6%8E%A5%E6%94%B6%E5%93%91%E9%9F%B3rx-ctcss-or-dcs">接收哑音（Rx CTCSS or DCS）</a></li>
+<li><a href="#%E5%B8%A6%E5%AE%BDbandwidth">带宽（Bandwidth）</a></li>
+<li><a href="#%E6%AD%A5%E8%BF%9Bstep">步进（Step）</a></li>
+<li><a href="#%E8%B6%85%E6%97%B6%E5%AE%9A%E6%97%B6%E5%99%A8tot">超时定时器（TOT）</a></li>
+<li><a href="#%E8%B7%B3%E8%BF%87%E5%8C%BA%E5%9F%9Fzone-skip">跳过区域（Zone Skip）</a></li>
+<li><a href="#%E8%B7%B3%E8%BF%87%E4%BF%A1%E9%81%93all-skip">跳过信道（All Skip）</a></li>
+<li><a href="#%E5%A3%B0%E6%8E%A7%E5%8F%91%E5%B0%84vox">声控发射（VOX）</a></li>
+<li><a href="#%E4%BF%9D%E5%AD%98%E5%AF%B9%E4%BF%A1%E9%81%93%E7%9A%84%E6%9B%B4%E6%94%B9">保存对信道的更改</a></li>
+</ul>
+</li>
+<li><a href="#%E8%87%B4%E8%B0%A2credits">致谢（Credits）</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%91%E8%B5%B7%E6%88%96%E6%8E%A5%E6%94%B6%E5%8D%95%E5%91%BC">发起或接收单呼</a>
+<ul>
+<li><a href="#%E6%83%B3%E8%A6%81%E5%8F%91%E8%B5%B7%E5%8D%95%E5%91%BC%E7%9A%84%E8%AF%9D">想要发起单呼的话</a></li>
+<li><a href="#%E5%BD%93%E6%8E%A5%E6%94%B6%E5%88%B0%E4%B8%80%E4%B8%AA%E5%8D%95%E5%91%BC%E6%97%B6">当接收到一个单呼时</a></li>
+</ul>
+</li>
+<li><a href="#%E7%83%AD%E7%82%B9%E6%A8%A1%E5%BC%8Fhotspot-mode">热点模式（Hotspot mode）</a></li>
+<li><a href="#%E9%87%8D%E8%AE%BE%E7%94%B5%E5%8F%B0%E5%90%84%E9%A1%B9%E8%AE%BE%E5%AE%9A">重设电台各项设定</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8Emd730%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F">关于MD730的操作方式</a>
+<ul>
+<li><a href="#md730-%E4%BF%A1%E9%81%93%E9%80%9A%E8%AF%9D%E7%BB%84%E6%A8%A1%E5%BC%8F">MD730 信道/通话组模式</a></li>
+<li><a href="#md730-%E6%89%AB%E6%8F%8F%E6%A8%A1%E5%BC%8F">MD730 扫描模式</a></li>
+<li><a href="#md730-%E6%97%B6%E9%9A%99%E6%A8%A1%E5%BC%8F">MD730 时隙模式</a></li>
+<li><a href="#md730-%E8%89%B2%E7%A0%81%E6%A8%A1%E5%BC%8F">MD730 色码模式</a></li>
+<li><a href="#md730-dmr%E8%BF%87%E6%BB%A4%E6%A8%A1%E5%BC%8F">MD730 DMR过滤模式</a></li>
+<li><a href="#md730-%E5%8C%BA%E5%9F%9F%E6%A8%A1%E5%BC%8F">MD730 区域模式</a></li>
+<li><a href="#md730-%E5%8A%9F%E7%8E%87%E6%A8%A1%E5%BC%8F">MD730 功率模式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E4%BA%8Eopengd77-cps%E5%86%99%E9%A2%91%E8%BD%AF%E4%BB%B6%E7%9A%84%E8%AF%B4%E6%98%8E">关于OpenGD77 CPS写频软件的说明</a></li>
+</ul>
+<!-- /TOC -->
+<div style="page-break-after: always; break-after: page;"></div>
+<p><img src="file:///e:\GD77_clone\docs\media\OpenGD77-logo.png" alt=""></p>
+<h2 id="简介">简介</h2>
+<p>本用户手册及其系统固件（OpenGD77, OpenGD77S, OpenDM1801 以及 OpenRD5R）现处于原始开发阶段。*</p>
+<blockquote>
+<p>*译者注：GD77/GD77s对应国内型号特易通 MD760/MD730，DM1801/RD-5R对应国内型号宝峰DM1801/DM-5R mk2，为了便于大家理解，下文机型将统一替换为国内型号。</p>
+</blockquote>
+<p>由于更新较为频繁，部分图文描述可能与实际存在较大出入。
+当固件的某一部分稳定后，图片会重新更新。</p>
+<p>本项目的目的旨在开发一个功能齐全的、非商用的固件，借此代替特易通MD760/MD730与宝峰DM1801/DM-5R的原有操作系统。<br>
+该固件专为<strong>业余无线电用户</strong>使用打造，同时含有一些官方固件所没有的功能。</p>
+<p><strong>请注意：</strong>
+<strong>本固件依然处于开发阶段，仍有一些官方固件支持的关键功能在本固件内不被支持。</strong></p>
+<p>短信息发送与接收功能目前暂时不支持，但有可能在将来会被支持。</p>
+<p>双守功能没有被支持，并可能永远不会被支持，因为该功能可以使用频道（Channel）/区域（Zone）扫描功能所代替。
+扫描列表功能同样没有被支持，因为频道/区域扫描同样可以提供几乎相当的功能。</p>
+<p>隐私与加密功能将不会被支持，因为对于业余电台使用该功能是非法的行为。在某些国家或地区（例如澳大利亚），由于政府与法律要求，开发者被要求在任何加密系统中植入后门，实际上让开发一个含有加密的系统变得违法或者不可能。</p>
+<p>省电功能暂时没有开发，因此本固件在无信号的接收状态下耗电更高。将来可能会添加一些省电功能，然而某些高级功能，例如S表，如果使用了省电，将无法运行。</p>
+<h3 id="下载链接与其他资源">下载链接与其他资源</h3>
+<p><strong>固件源码:</strong></p>
+<p><strong>最新版本:</strong>
+<a href="https://github.com/rogerclarkmelbourne/OpenGD77/releases">https://github.com/rogerclarkmelbourne/OpenGD77/releases</a></p>
+<p><strong>带有新功能的OpenGD77 CPS写频软件:</strong>
+<a href="https://github.com/rogerclarkmelbourne/OpenGD77CPS/releases">https://github.com/rogerclarkmelbourne/OpenGD77CPS/releases</a></p>
+<p><strong>OpenGD77论坛:</strong>
+<a href="https://www.opengd77.com/">https://www.opengd77.com/</a></p>
+<h2 id="安装">安装</h2>
+<p>本固件可以被安装在以下几部电台</p>
+<ul>
+<li>特易通 MD-760</li>
+<li>特易通 MD-730</li>
+<li>宝峰 DM-1801</li>
+<li>宝峰 DM-5R</li>
+</ul>
+<p>固件文件可以使用附带的FirmwareLoader.exe安装，也可使用特易通或者宝峰官方提供的固件更新工具进行安装。</p>
+<p>安装本固件的风险由您自行承担，若遇到任何问题，请尝试重新刷入官方固件。<br>
+<strong>刷机成功后，建议您使用OpenGD77 CPS备份整个固件</strong></p>
+<blockquote>
+<p>译者注：同时按住两个侧边按键并打开电台可以进入固件刷写模式</p>
+</blockquote>
+<p><em>请注意 :</em> 电台官方的CPS与本固件的 OpenGD77写频软件 不兼容，请使用本固件提供的软件进行写频。OpenGD77写频软件可以从本指南的1.1章节处下载。宝峰DM1801也必须使用这个软件。</p>
+<h2 id="电台配置文件codeplug兼容性">电台配置文件（Codeplug）兼容性</h2>
+<p>本固件所使用的电台配置文件与官方的略有不同。</p>
+<p>如果您使用的电台型号不是MD760，则需要对配置文件格式进行转换。感谢Colin G4EML编写了一个软件可以将原厂专用的文件转换为CSV格式，您可以在<a href="http://www.gb3gf.co.uk/downloads.html">这里</a>下载。使用该软件可以将专用的电台配置文件导出至CSV文件，再通过OpenGD77写频软件导入。</p>
+<p>电台配置文件只能使用OpenGD77 CPS写入到电台。</p>
+<p>我们推荐您检查已有的信道列表，将频率重复但通话组不同的信道删除。更多信息请参阅本指南尾部的‘为本固件写入信道与通话组’。</p>
+<h2 id="不同电台之间的固件差异">不同电台之间的固件差异</h2>
+<p>不是所有受支持的电台都有相同的按键数或屏幕大小，因此操作这些电台会与操作MD760有些不同之处。此外，并不是所有的电台都支持全部的功能。</p>
+<ul>
+<li>
+<p>宝峰 DM-5R 的硬件不支持在电台发射时通过USB进行通讯，所以热点模式在这台电台上无法使用。</p>
+</li>
+<li>
+<p>宝峰 DM-5R 没有左右方向键，由 <strong>A/B</strong> 和 <strong>Band</strong> 按键代替 <strong>左方向键</strong> 和 <strong>右方向键</strong></p>
+</li>
+<li>
+<p>宝峰 DM-5R 没有橙色按键，该功能由长按橙色的 <strong>MR/VFO</strong> 代替。</p>
+</li>
+<li>
+<p>宝峰 DM-5R 有两个侧键，但是其位置与MD760和DM1801不同，位于PTT上方的是MD760上的 <strong>黑色按键</strong> （或称为SK1），位于PTT下方的是MD760上的 <strong>蓝色按键</strong> （或称为SK2）.</p>
+</li>
+<li>
+<p>宝峰 DM-5R 作为热点效果差强人意，因为其射频输出实在是太差劲了，并且会对树莓派（甚至其他系统）造成严重的射频干扰导致USB连接失效。</p>
+</li>
+<li>
+<p>MD730没有键盘或者屏幕，因此操作方式与其他有屏幕的电台完全不同。</p>
+</li>
+</ul>
+<p>对于MD730的操作请看附录 <a href="#%E5%85%B3%E4%BA%8Emd730%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F">关于MD730的操作方式</a></p>
+<ul>
+<li>
+<p>宝峰 DM1801 有独立的 <strong>MR/VFO</strong> 按键，可用于切换信道/频率模式，而不需要使用 <strong>红色</strong> 的菜单键</p>
+</li>
+<li>
+<p>宝峰 DM1801 也有独立的 <strong>A/B</strong> 按钮，用于切换A/B频率，而不需要使用机顶的 <strong>橙色</strong> 按钮进入快速菜单再切换。</p>
+</li>
+</ul>
+<h2 id="主屏幕频率与信道界面">主屏幕（频率与信道界面）</h2>
+<p>本固件有两个主屏幕：频率界面（VFO）与信道界面（Channel）。这与原装固件的界面类似，但拥有了更多功能。<br>
+在本固件安装完成后，默认显示VFO界面。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\vfo-screen.png" alt=""></p>
+<p>VFO界面显示的发射与接收频率会从电台配置文件（Codeplug）中的“VFO A”配置读取</p>
+<p>无论在VFO或信道界面，当前模式（DMR/FM）都会显示在屏幕左上角，电量百分比会显示在右上角。</p>
+<p>在DMR模式中，当前时隙会显示在“DMR”右侧，例如时隙2会显示为 <strong>“TS2”</strong> ，色码会显示在电池左侧，例如色1会显示为 <strong>“C1”</strong> ，当时隙过滤关闭时，<strong>“TS1”</strong> 或 <strong>“TS2”</strong> 会反色显示。</p>
+<p>当前的发射功率会显示在屏幕顶部中间，例如 <strong>“750mW”</strong></p>
+<p>在VFO界面，发射与接收频率都会显示，当处于DMR模式的时候，通话组也会同时显示。</p>
+<p>R（接收频率）左侧的小箭头表示当前控制的是接收频率，使用上下箭头按键或数字键可以改变接收频率。</p>
+<p>信道界面会在顶部显示与VFO界面相同的内容，中间则显示信道名称（此处为“Lee Hill”）与区域（此处为“Home DMR”）。在DMR模式下还会显示通话组（此处为“ColoradoHD”）。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\dmr-screen.png" alt=""></p>
+<p>在这两个界面中:</p>
+<p>按压 <strong>红色</strong> 菜单按钮可以在VFO界面与信道界面之间切换。</p>
+<p>注意在宝峰DM1801和DM5R上，按压 <strong>MR/VFO</strong> 按键以切换频率/信道界面。</p>
+<p>按压 <strong>绿色</strong> 菜单按键进入菜单选项。</p>
+<p>按压 <strong>蓝色+绿色</strong> 组合键快速进入信道信息界面，该界面同样可以从菜单进入。</p>
+<p><em>请注意 :</em>
+VFO实际上是一种特殊的信道，因此信道信息界面同样适用于频率界面。</p>
+<h3 id="在模拟与数字模式之间切换">在模拟与数字模式之间切换</h3>
+<p>按压 <strong>蓝色+星号</strong> 组合键可以在FM和DMR模式之间切换，该操作适用于任意信道和VFO</p>
+<h3 id="在dmr模式下切换时隙">在DMR模式下切换时隙</h3>
+<p>在DMR模式下，按压 <strong>星号</strong> 按键以切换时隙1与时隙2</p>
+<h3 id="控制发射功率">控制发射功率</h3>
+<p>按压 <strong>蓝色+右</strong> 组合键以增加功率。按压 <strong>蓝色+左</strong> 组合键以减小功率。功率可以被设置为以下几档：50mW、250mW、500mW、750mW、1W、2W、3W、4W、5W 以及 5W++。</p>
+<p>5W++功率档位会将功放芯片驱动到极限。<br>
+该功率仅为供应急使用而设计，在70cm段输出约5.5W，在2m段输出约7W。<br>
+要选择该功率档位，首先选择5W档位，然后按住 <strong>蓝色+右</strong> 组合键</p>
+<p><em>请注意 :</em></p>
+<p>（1）功率档位有且只有在您校准了手中的电台之后才准确，而这些电台在出厂时似乎并未精确校准其功率。</p>
+<p>（2）本固件并没有使用原厂的两档高/低功率设定，而是10档功率可调。</p>
+<h3 id="信号强度条s表">信号强度条（S表）</h3>
+<p>在FM与DMR模式中，接收信号的强度表现为横跨屏幕一个条形图（S表）。S表指示在最右端时大约为S9+40dB。</p>
+<p>在DMR模式中，只有当硬件检测到DMR信号时S表才会工作。</p>
+<p>在FM模式中，S表应一直工作。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\signal-meter.png" alt=""></p>
+<h3 id="信道界面的特殊功能">信道界面的特殊功能</h3>
+<p>信道界面显示了当前信道号码（Channel）与当前区域（Zone）。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\channel-and-zone.png" alt=""></p>
+<h4 id="在当前区域内切换信道">在当前区域内切换信道</h4>
+<p>按压 <strong>上</strong> 或 <strong>下</strong> 方向键可以在当前区域内改变信道，信道号会显示在区域号的边上。</p>
+<h4 id="改变区域">改变区域</h4>
+<p>按压 <strong>蓝色+上</strong> 或 <strong>蓝色+下</strong> 分别可以切换上一个/下一个区域。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\changing-zones.png" alt=""></p>
+<h3 id="显示信道频率">显示信道频率</h3>
+<p>在FM与DMR模式中，都可以按住 <strong>黑色</strong> 侧键以显示接收与发射频率。</p>
+<h3 id="显示fm模式具体信道信息">显示FM模式具体信道信息</h3>
+<p>在FM模式中，按住 <strong>黑色</strong> 侧键以显示例如哑音以及静噪等设置。</p>
+<h3 id="上行监听功能">上行监听功能</h3>
+<p>按压 <strong>黑色</strong> 侧键，然后按 <strong>蓝色</strong> 按键，可以启用上行监听。*<br>
+该功能同时会显示信道信息，且同时适用于FM和DMR模式。</p>
+<blockquote>
+<p>*译者注：该功能与倒频类似，按住可暂时交换接收与发射频率，将中继使用的上行与下行频率颠倒，可用于在不改变对方参数的情况下接收对方上行信号。</p>
+</blockquote>
+<h4 id="信道界面快捷菜单">信道界面快捷菜单</h4>
+<p>按压机器顶部 <strong>橙色</strong> 按键可以调出信道界面的快捷菜单。在该菜单下 <strong>橙色</strong> 按键和 <strong>绿色</strong> 按键具有相同的功能，都可以确认当前选项。</p>
+<p><em>请注意 :</em> 宝峰DM5R没有顶部的橙色按键，请长按MR/VFO按键以访问该快捷菜单。</p>
+<h5 id="拷贝一个信道配置至vfochannel----vfo">拷贝一个信道配置至VFO（Channel --&gt; VFO）</h5>
+<p>按压 <strong>橙色</strong> 按键，或按压 <strong>绿色</strong> 按键以拷贝当前信道配置至频率界面。</p>
+<h5 id="将vfo信息写入当前信道vfo----channel">将VFO信息写入当前信道（VFO --&gt; Channel）</h5>
+<p>按压 <strong>橙色</strong> 按键，或按压 <strong>绿色</strong> 按键以确认，按压 <strong>红色</strong> 按键以取消。</p>
+<h5 id="过滤器设置filter">过滤器设置（Filter）</h5>
+<h6 id="fm模式的过滤设置哑音">FM模式的过滤设置（哑音）</h6>
+<p>使用 <strong>左</strong> 箭头或者 <strong>右</strong> 箭头以开启或关闭哑音</p>
+<h6 id="dmr模式的过滤设置">DMR模式的过滤设置</h6>
+<p>使用 <strong>左</strong> 箭头或者 <strong>右</strong> 箭头以选择：</p>
+<ul>
+<li><strong>None</strong> (不过滤，用于监听任何频率活动)</li>
+<li><strong>TG</strong> (按选中的通话组过滤组呼)</li>
+<li><strong>Ct</strong> (按预存联系人过滤单呼)</li>
+<li><strong>RxG</strong> (按接收组列表过滤组呼)</li>
+</ul>
+<p>启用过滤时，屏幕中间上方的“DMR”指示会反色显示。</p>
+<h5 id="色码过滤cc-filter仅限dmr模式">色码过滤（CC Filter）（仅限DMR模式）</h5>
+<p>色码过滤可以过滤与您的色码不相同的电台信号。<br>
+使用 <strong>左</strong> 按键，或 <strong>右</strong> 按键以开关该功能。</p>
+<p>关闭色码过滤时，屏幕上的色码指示会反色显示。</p>
+<h5 id="时隙过滤ts-filter仅限dmr模式">时隙过滤（TS Filter）（仅限DMR模式）</h5>
+<p>时隙过滤可以让您选择两个时隙中的一个进行通联。<br>
+使用 <strong>左</strong> 按键，或 <strong>右</strong> 按键以开关该功能。</p>
+<p>关闭时隙过滤时，屏幕上的时隙指示会反色显示。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\channel-quick-menu.png" alt=""></p>
+<h4 id="vfo界面快捷菜单">VFO界面快捷菜单</h4>
+<p>在VFO界面，按压机器顶部的 <strong>橙色</strong> 按键进入快捷菜单，目前该菜单有五个选项。</p>
+<p><em>请注意 :</em> 宝峰DM5R没有顶部的橙色按键，请长按MR/VFO按键以访问该快捷菜单。</p>
+<h5 id="选择vfo-ab">选择VFO A/B</h5>
+<p>在VFO界面，按压两次 <strong>橙色</strong> 按键以切换VFO A/B</p>
+<p><em>请注意 :</em> 在宝峰DM1801上，该功能由按压一次 <strong>A/B</strong> 按键实现。</p>
+<h5 id="交换接收与发射频率tx----rx">交换接收与发射频率（Tx &lt;--&gt; Rx）</h5>
+<p>该功能即倒频功能，在VFO界面，按压 <strong>绿色</strong> 或 <strong>橙色</strong> 按键以确认。</p>
+<h5 id="将接收频率拷贝至发射频率rx----tx">将接收频率拷贝至发射频率（Rx --&gt; Tx）</h5>
+<p>将接收频率拷贝至发射频率，按压 <strong>绿色</strong> 或 <strong>橙色</strong> 按键以确认</p>
+<h5 id="将发射频率拷贝至接收频率tx----rx">将发射频率拷贝至接收频率（Tx --&gt; Rx）</h5>
+<p>将发射频率拷贝至接收频率，按压 <strong>绿色</strong> 或 <strong>橙色</strong> 按键以确认。</p>
+<h5 id="过滤器filter仅限dmr模式">过滤器（Filter）（仅限DMR模式）</h5>
+<p>该功能与先前描述过滤器功能相同，此处不再赘述。</p>
+<h4 id="存储vfo配置至新建信道vfo----new-chan">存储VFO配置至新建信道（VFO --&gt; New Chan）</h4>
+<p>该选项会将当前VFO设定存储至一个新建信道。<br>
+新建信道名称将遵循&quot;New channel NNN&quot;格式，其中“NNN”代表“All Channels”区域中下一个可用的频道号码。<br>
+新建信道不会被添加到任何区域，但可在“All Channels”中找到。</p>
+<h5 id="哑音扫描tone-scan仅限fm模式">哑音扫描（Tone Scan）（仅限FM模式）</h5>
+<p>该功能可以扫描模拟（CTCSS）或数字（DCS）哑音，找到正确的哑音后设置将被存入当前VFO。</p>
+<p>本功能默认会扫描 <strong>CTCSS和DCS</strong> ，但如果您只想扫描CTCSS或者DCS，按压 <strong>左</strong> 或 <strong>右</strong> 方向键以选择对应哑音。</p>
+<p>按压 <strong>橙色</strong> 或 <strong>绿色</strong> 按键以确认存入，或按压 <strong>红色</strong> 按键以取消。</p>
+<p>取消哑音扫描后，接收频率的哑音设置会回到之前的设定。</p>
+<p>若扫描到对应的哑音，接收与发射频率都会被设置为扫描到的哑音频。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\vfo-quick-menu.png" alt=""></p>
+<h3 id="与dmr有关的一些设定">与DMR有关的一些设定</h3>
+<p>这些操作在VFO与信道界面都可以执行</p>
+<h4 id="时隙选择">时隙选择</h4>
+<p>按压数字键盘上的 <strong>星号</strong> 按键可以切换时隙1与时隙2。</p>
+<h4 id="dmr-id呼号与名字显示">DMR ID、呼号与名字显示</h4>
+<p>当接收到与您设定的色码相同的DMR信号时，电台会显示该主叫电台的通话组以及DMR ID。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\talkgroup-and-dmr-id.png" alt=""></p>
+<p>若该DMR ID之前已预先加载于电台的ID数据库内，则会显示该电台的呼号与名字。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\callsign-and-name.png" alt=""></p>
+<h4 id="主叫别名显示">主叫别名显示</h4>
+<p>若收到的信号来自Brandmeister网络，且主叫DMR ID并未记录在电台的数据库中，则会显示由Brandmeister发送过来的别名。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\talker-alias.png" alt=""></p>
+<p>呼号会显示在屏幕中央，额外的信息会显示在屏幕底部，默认情况下该信息是DMR ID</p>
+<p>若主叫电台在Brandmeister的“Self care”页面APRS栏目中输入了任何信息（即别名数据），则该信息会代替DMR ID出现在屏幕下方。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\talker-alias-data.png" alt=""></p>
+<p><em>请注意 :</em> 由于主叫别名数据是嵌入在DMR语音数据帧中一同传送的，呼号通常会先出现，大约一秒后DMR ID与其他文字信息才会显示。</p>
+<h4 id="从接收组列表中选择通话组">从接收组列表中选择通话组</h4>
+<p>按压 <strong>左</strong> 方向键或 <strong>右</strong> 方向键，可以在事先写入的接收组列表中选择不同的通话组。
+该通话组会同时应用于接收与发射（频率）。</p>
+<p><em>请注意 :</em> 宝峰DM5R没有左右方向键，请使用A/B按键代替左方向键，使用Band按键代替右方向键。</p>
+<h4 id="为联系人或通话组指定时隙">为联系人或通话组指定时隙</h4>
+<p>CPS软件最近新增的一个功能允许您为每个联系人或通话组指定一个时隙。</p>
+<p>默认状态下，信道时隙指定功能是关闭的。这意味着如果您在接收组列表中按压 <strong>左</strong> 方向键或 <strong>右</strong> 方向键选择通话组，时隙不会改变。</p>
+<p>若联系人被指定了一个特定时隙（例如时隙1），当该联系人被选中时，时隙会自动设置为该指定时隙。</p>
+<h4 id="通话组反色显示">通话组反色显示</h4>
+<p>若通话组标识在您接收到DMR信号时反色显示，则表明您的通话组与接收到的通话组并不相符，因此当您按下PTT时，您的信号不会被发送至接收到的通话组，而是您设置的通话组。</p>
+<p>如果您想要与接收到的信号在同一组发射，在通话组反色显示期间，按压电台侧边的 <strong>蓝色</strong> 侧键可以将您的通话组设置为接收到的通话组。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\talkgroup-inverse-video.png" alt=""></p>
+<h4 id="手动输入通话组代码">手动输入通话组代码</h4>
+<p>按压数字键盘的 <strong>井号</strong> 按键进入通话组输入界面。<br>
+您可以手动输入通话组代码，该通话组代码是临时的，按压 <strong>绿色</strong> 按键以确认。<br>
+若您输入的通话组在联系人数据库中，该通话组的名称会直接显示，否则，通话组的号码会被显示（例如 TG 98977）。</p>
+<p>按压任意 <strong>左</strong> 方向键或 <strong>右</strong> 方向键可以退出并回到上一个通话组。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\talkgroup-entry.png" alt=""></p>
+<p>当您手动输入通话组代码时，通话组周围会显示一圈框线以提示您当前通话组是临时的。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\talkgroup-manually-entered.png" alt=""></p>
+<h4 id="输入单呼号码">输入单呼号码</h4>
+<p>按压数字键盘 <strong>井号</strong> 按键两次，然后手动输入需要单呼的DMR ID。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\private-call-entry.png" alt=""></p>
+<p>在所有的数字键盘输入界面中，按压 <strong>红色</strong> 按键都可以返回上一个界面。</p>
+<h4 id="选择联系人">选择联系人</h4>
+<p>按压数字键盘 <strong>井号</strong> 按键三次，可以进入联系人选择界面。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\contact-selection.png" alt=""></p>
+<p>联系人姓名会显示在屏幕中央（例如TG 505 TS2）通话组或单呼号码会显示在屏幕底部。<br>
+按压 <strong>下</strong> 方向键或 <strong>上</strong> 方向键可浏览联系人列表。<br>
+按压 <strong>绿色</strong> 按键以选择该联系人，或按压 <strong>红色</strong> 按键以取消。<br>
+也可使用该方法发起单呼。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\private-call-selection.png" alt=""></p>
+<h4 id="临时修改您的dmr-id">临时修改您的DMR ID</h4>
+<p>该功能仅用于测试用途。<br>
+在联系人选择界面，按压 <strong>蓝色功能键+井号</strong> 组合键可以临时修改您的DMR ID。</p>
+<p>直到您再次修改ID，或关闭、重启电台为止，该临时ID会一直生效。</p>
+<p>若想要让此更改永久生效，请在输入界面按压 <strong>蓝色功能键+绿色</strong> 组合键以确认。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\user-dmr-id.png" alt=""></p>
+<h3 id="与fm有关的一些设定">与FM有关的一些设定</h3>
+<h4 id="窄带fm">窄带FM</h4>
+<p>对于25kHz频宽的FM模式，屏幕左上角会显示“FM”，对于12.5kHz的窄带FM模式，屏幕左上角会显示“FMN”</p>
+<h4 id="哑音设置">哑音设置</h4>
+<p>信道或VFO都可设置哑音。屏幕左上角显示的“C”，“D”，“T”，“R”或“TR”代表了不同的哑音设定。
+其中，<strong>C</strong> 代表CTCSS，<strong>D</strong> 代表DCS，<strong>T</strong> 代表发射哑音，<strong>R</strong> 代表接收哑音，<strong>TR</strong> 代表接收与发射哑音。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\ctcss-tone.png" alt=""></p>
+<p>接收与发射哑音是可以进行单独设置的。</p>
+<h4 id="静噪">静噪</h4>
+<p>按压 <strong>左</strong> 方向键或 <strong>右</strong> 方向键，可以设置FM静噪的强度。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\squelch.png" alt=""></p>
+<p>在静噪设置界面，按压 <strong>左</strong> 方向键会关小静噪，按压 <strong>右</strong> 方向键会开大静噪。信道界面与VFO界面的静噪等级是独立的，可以单独调整。静噪可以按5%的步进设置。</p>
+<p>在新版CPS软件内，每个信道或VFO都可以被指定不同的静噪等级。</p>
+<p>在这个例子中静噪被设置为20%</p>
+<p>若在VFO界面改变静噪等级，即便您关闭或重启了电台，该数值依旧会被记忆。但是在信道界面，改变静噪只是暂时的。</p>
+<p>在信道界面，若想要让您设置的静噪永久生效，按压 <strong>蓝色功能键+绿色</strong> 组合键以进入信道信息界面，然后再次按压 <strong>绿色</strong> 按键以保存您的设置。</p>
+<p><em>请注意 :</em> 若您设置了接收哑音，则该设置比接收静噪具有更高优先级，降低静噪等级并不会使您的电台打开静噪。</p>
+<h4 id="1750hz音频脉冲发射操作">1750Hz音频脉冲发射操作</h4>
+<p>在FM模式的发射中，按压 <strong>蓝色功能键</strong> 可以发射1750Hz音频脉冲。*</p>
+<blockquote>
+<p>*译者注：该功能常用于访问欧洲的中继台。</p>
+</blockquote>
+<h4 id="双音多频dtmf发射操作">双音多频（DTMF）发射操作</h4>
+<p>在发射中，按压任意数字键盘按键，可以发射DTMF音频，该音频同时会从电台扬声器中发出。</p>
+<h3 id="与vfo有关的一些设定">与VFO有关的一些设定</h3>
+<p><img src="file:///e:\GD77_clone\docs\media\vfo-screen.png" alt=""></p>
+<p>VFO界面在任何时候都会显示接收与发射频率。</p>
+<p>当您选中接收频率时，“R”左侧会显示一个小箭头，此时改变频率会同时改变接收与发射频率。</p>
+<h4 id="频率步进">频率步进</h4>
+<p>按压 <strong>上</strong> 方向键或 <strong>下</strong> 方向键可以以预先设置的频率步进改变频率。
+想要调整频率步进，可以按压 <strong>蓝色功能键+绿色</strong> 进入信道信息界面，选择“Step”选项进行调整。</p>
+<h4 id="使用数字键盘输入频率">使用数字键盘输入频率</h4>
+<p>按压数字键盘上的任意数字可以直接输入频率。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\frequency-entry.png" alt=""></p>
+<p>输入完所有数字后，电台会发出确认提示音并回到VFO界面。
+若输入的频率无效，电台会发出错误提示音。</p>
+<p>当您在输入频率时：</p>
+<p>按压 <strong>红色</strong> 按键可取消当前输入。</p>
+<p>按压 <strong>左</strong> 方向键可以依次删除输入的数字。</p>
+<h4 id="单独调整发射频率">单独调整发射频率</h4>
+<p>按压 <strong>蓝色功能键</strong> 然后按压 <strong>下</strong> 方向键，可以切换当前选择的频率至发射频率，此时您可以单独调整发射频率。<br>
+按压 <strong>蓝色功能键</strong> 然后按压 <strong>上</strong> 方向键，可以回到接收频率。<br>
+使用这个方法您可以单独调整发射频率，例如用于访问中继台，或进行卫星操作，因为接收与发射频率甚至可以跨段。</p>
+<p><em>请注意 :</em> 如果设置了不同的接收与发射频率，当您调整接收频率时，频差会尽可能的保留。若发射频率超出电台硬件能操作的范围时，将会丢弃频差，并保持发射频率不变。</p>
+<h2 id="发射">发射</h2>
+<p>在您的电台发射期间，计数器将累加或减少，这取决于您是否设置了发射超时定时器。<br>
+若您设置了发射超时定时器，计数器将会倒计时；若您没有设置发射超时定时器，则计数器将会累加计数。
+在DMR 2代标准下，只有当中继台活跃时，计数器才会开始计数。<br>
+无论在FM或DMR发射操作下，在原本S表的位置都会显示一个麦克风电平表（VU表）。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\dmr-mic-level.png" alt=""></p>
+<h3 id="超时提示音timeout-beep">超时提示音（Timeout beep）</h3>
+<p>您可以在声音设定菜单设置超时提示音，当您设置了一个时间，例如10秒，则在接近发射超时前10秒，超时提示音将会每隔5秒鸣响以提示您即将超时。</p>
+<h3 id="发射超时定时器tot">发射超时定时器（TOT）</h3>
+<p>设置发射超时的时间，在发射时计数器将会倒计时，归零后，电台会停止发射并发出“滴~”的提示音。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\timeout.png" alt=""></p>
+<h2 id="扫描功能">扫描功能</h2>
+<p>信道界面与VFO界面都支持扫描，不过两者操作略有不同。</p>
+<h3 id="信道扫描">信道扫描</h3>
+<p>长按 <strong>上</strong> 方向键以开始扫描这个区域内的信道。<br>
+按压 <strong>下</strong> 方向键可反转扫描方向。<br>
+在扫描过程中，按压 <strong>左</strong> 方向键可以将当前信道暂时踢出扫描列表（nuisance delete）。<br>
+按压任何其他按键以退出扫描。<br>
+在扫描过程中，相应的“DMR”或“FM”模式标志会闪烁。</p>
+<h3 id="频率扫描">频率扫描</h3>
+<p>VFO界面的扫描模式有些特殊，长按 <strong>上</strong> 方向键以进入VFO扫描模式。<br>
+当扫描模式开启时，接收频率显示将会被上下区间频率所代替。</p>
+<p>初始的扫描区间将会设置为当前VFO±1Mhz。</p>
+<p>按压数字键盘可以手动输入上下区间频率。<br>
+例如输入：</p>
+<p>1 4 4 0 0 0 1 4 8 0 0 0</p>
+<p>可将下区间设置为144.000Mhz，上区间设置为148.000Mhz。</p>
+<p>再次长按 <strong>上</strong> 方向键以启动扫描。</p>
+<p>在扫描模式下，按压 <strong>上</strong> 方向键或 <strong>下</strong> 方向键可以正常调整VFO频率。</p>
+<p>按压 <strong>左</strong> 方向键可反转扫描方向。<br>
+按压 <strong>右</strong> 方向键可以将当前VFO暂时踢出扫描列表（nuisance delete）。
+按压 <strong>上</strong> 方向键可跳过当前VFO并继续扫描。
+按压任何其他按键以停止扫描。<br>
+长按 <strong>下</strong> 方向键以退出VFO扫描模式。</p>
+<h2 id="其他界面">其他界面</h2>
+<h3 id="锁屏界面">锁屏界面</h3>
+<p><img src="file:///e:\GD77_clone\docs\media\lock-screen.png" alt=""></p>
+<p>在任意界面，按压 <strong>绿色</strong> 按键以进入菜单，接着按压数字键盘 <strong>星号</strong> 按键以锁定数字键盘。在任意顶层菜单界面按压数字键盘 <strong>星号</strong> 按键都可以锁定。</p>
+<p>按住 <strong>蓝色功能键</strong> 并按压数字键盘 <strong>星号</strong> 按键以解锁。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\keypad-and-ptt-locked.png" alt=""></p>
+<p>PTT按键同样可以被锁定，与数字键盘锁定操作类似，在任意顶层菜单界面按压数字键盘 <strong>井号</strong> 按键以锁定PTT。*</p>
+<blockquote>
+<p>*译者注：数字键盘锁定与PTT锁定是分开的，你可以只锁定任意一项。但是锁定PTT之后，数字键盘并没有一起被锁定，请重复上述数字键盘锁定操作以锁定数字键盘。而解锁操作是同时解锁的，即无论你锁定了什么，当执行解锁操作时会一同解锁。</p>
+</blockquote>
+<h3 id="文字输入界面">文字输入界面</h3>
+<p>本固件支持在新建或编辑联系人时输入英文字母。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\text-entry.png" alt=""></p>
+<p>按压 <strong>左</strong> 或 <strong>右</strong> 方向键可以移动光标，按压 <strong>蓝色功能键+左</strong> 组合键可以退格，按压 <strong>蓝色功能键+右</strong> 组合键可以输入空格。输入方法与英文九宫格输入法类似，在此不进行赘述。</p>
+<h2 id="控制按键与按钮">控制按键与按钮</h2>
+<p><img src="file:///e:\GD77_clone\docs\media\RadioButtons_CN.jpg" alt=""></p>
+<h2 id="菜单系统">菜单系统</h2>
+<p>与官方固件相比，本固件使用了一个：针对于业余使用、着重于简单明了、突出常用功能、且经过重大修改的菜单。具体结构请参考下面的菜单图。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\menu-roadmap-1.png" alt=""></p>
+<p><img src="file:///e:\GD77_clone\docs\media\menu-roadmap-2.png" alt=""></p>
+<p><img src="file:///e:\GD77_clone\docs\media\menu-roadmap-3.png" alt=""></p>
+<p>按压 <strong>绿色</strong> 按键可以进入主菜单，再次按压可进入子菜单或直接退出。<br>
+按压 <strong>红色</strong> 按键可以返回上一级或直接退出。<br>
+按压 <strong>上</strong> 或 <strong>下</strong> 方向键可浏览菜单各选项。<br>
+按压 <strong>左</strong> 或 <strong>右</strong> 方向键可以更改菜单选项的值。</p>
+<p>位于电台左侧的 <strong>蓝色</strong> 按键，或称为 <strong>蓝色多功能键</strong> ，通常会与其他按键搭配使用。<br>
+按压电台顶部的 <strong>橙色</strong> 按键可以访问快捷菜单。</p>
+<h2 id="主菜单">主菜单</h2>
+<p><img src="file:///e:\GD77_clone\docs\media\main-menu.png" alt=""></p>
+<h3 id="区域zone">区域（Zone）</h3>
+<p>区域菜单用于选择不同信道区域，该菜单与原装固件非常相似，但有一点不同。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\zones.png" alt=""></p>
+<p>除了您事先在写频软件中定义的区域之外，本固件还会创建一个特殊区域叫做 <strong>全部信道（All Channels）</strong></p>
+<p><img src="file:///e:\GD77_clone\docs\media\all-channels.png" alt=""></p>
+<p>当您选择 <strong>全部信道（All Channels）</strong> 这个特殊区域后，主屏幕下方会显示“All Channels”与信道编号。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\all-channels-channel-screen.png" alt=""></p>
+<p>按压 <strong>上</strong> 或 <strong>下</strong> 方向键可以浏览所有信道。<br>
+按住 <strong>蓝色功能键</strong> 再使用上下方向键可以在不同区域之间快速切换。<br>
+在全部信道区域中，按压任意数字按键可以进入信道跳转模式。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\goto-channel-number.png" alt=""></p>
+<p>在该模式下，您可以输入想要跳转的信道编号，按压 <strong>绿色</strong> 按键以确认，或 <strong>红色</strong> 按键以取消。</p>
+<h3 id="信号强度指示器rssi">信号强度指示器（RSSI）</h3>
+<p>本菜单会显示一个S表与具体RSSI数值（以dBm为单位）</p>
+<p><img src="file:///e:\GD77_clone\docs\media\rssi.png" alt=""></p>
+<p><em>请注意 :</em><br>
+RSSI读数与S表并未经过精确校准，在不同电台上，准确度会有所变化。<br>
+由于DMR信号属于脉冲信号，因此在接收到DMR信号时，电台显示的RSSI数值并不准确。<br>
+屏幕右上角的数字是由电台硬件直接报告的数值，仅用于开发用途。</p>
+<h3 id="电池battery">电池（Battery）</h3>
+<p>显示当前电池电压。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\battery.png" alt=""></p>
+<p>按压 <strong>下</strong> 方向键可以显示电池使用情况表。横坐标每一格代表十分钟。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\battery-graph.png" alt=""></p>
+<h3 id="回溯界面last-heard">回溯界面（Last Heard）</h3>
+<p>显示电台最近接收到的16个DMR台站。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\last-heard.png" alt=""></p>
+<p>按压 <strong>上</strong> 或 <strong>下</strong> 方向键，可以浏览这些台站。
+按住 <strong>蓝色功能键</strong> 可以查看详细信息。</p>
+<h3 id="固件信息firmware-info">固件信息（Firmware Info）</h3>
+<p><img src="file:///e:\GD77_clone\docs\media\firmware-info.png" alt=""></p>
+<p>显示固件编译的时间与日期，方括号内是Github的commit code。</p>
+<p>请在Github查看源码：
+<a href="https://github.com/rogerclarkmelbourne/OpenGD77/commit/">https://github.com/rogerclarkmelbourne/OpenGD77/commit/</a></p>
+<p>可以使用commit code查看具体版本修改内容：
+<a href="https://github.com/rogerclarkmelbourne/OpenGD77/commit/a0ebbc7">https://github.com/rogerclarkmelbourne/OpenGD77/commit/a0ebbc7</a></p>
+<h3 id="选项设定options">选项设定（Options）</h3>
+<p><img src="file:///e:\GD77_clone\docs\media\menu-options.png" alt=""></p>
+<p>选项设定菜单用于更改固件本身的诸多设置</p>
+<p><img src="file:///e:\GD77_clone\docs\media\options-screen.png" alt=""></p>
+<h4 id="恢复出厂设置fact-reset">恢复出厂设置（Fact Reset）</h4>
+<p>恢复电台所有的设置到默认状态，同时读取VFO A到主屏幕。<br>
+重启电台以生效。</p>
+<p><strong>按住蓝色多功能键并打开电台同样可以恢复出厂设置</strong></p>
+<h4 id="校准参数calibration">校准参数（Calibration）</h4>
+<p>打开或关闭校准参数，默认关。</p>
+<p>有些电台似乎含有无效的校准数据，有可能是因为官方固件的校准数据已经占用了机内闪存，导致本固件默认的校准数据无效。</p>
+<p>更改本设定需要重启电台生效。</p>
+<p>若您的电台发射接收不正常，或在使用热点时不太正常（例如误码率奇高），试着关闭本设定并重启电台，因为本固件默认的校准参数在使用时已经够好，基本上与精确校准的参数比没有太大差别。</p>
+<h4 id="波段限制band-limits">波段限制（Band Limits）</h4>
+<p>打开或关闭发射波段限制，本功能打开时会禁止您在非业余段发射，默认开。</p>
+<h4 id="按键长按时间key-long">按键长按时间（Key long）</h4>
+<p>本设置控制您按压某个特定按键多久后会被认为是长按。</p>
+<h4 id="按键重复速度key-rpt">按键重复速度（Key rpt）</h4>
+<p>本设置控制您按住某个特定按键后该按键的重复速度。</p>
+<h4 id="时隙驻留时间filter-time">时隙驻留时间（Filter time）</h4>
+<p>本功能仅在时隙过滤关闭（<strong>Filter: Off</strong>）时有效。它决定了电台在轮询时每个时隙时的驻留时间。<br>
+为了防止在某一时隙存在较长时间空闲的时候错过这个时隙上的信息，您可以把驻留时间调得长一些。<br>
+当时隙过滤功能打开（<strong>Filter: TS</strong>）时，本功能没有任何作用。</p>
+<h4 id="扫描驻留时间scan-delay">扫描驻留时间（Scan delay）</h4>
+<p>在扫描时，本设置控制电台驻留某个活动信道的时长。只有当扫描模式选择为“暂停”（<strong>Scan mode: Pause</strong>）时本设置才有效。</p>
+<h4 id="扫描模式scan-mode">扫描模式（Scan mode）</h4>
+<p>本设置控制在扫描时遇到某个活动信道后电台的行为。<br>
+“保持”（<strong>Hold</strong>）会使电台一直驻留在一个活动信道上。<br>
+“暂停”（<strong>Pause</strong>）会使电台驻留在一个活动信道一段时间后继续扫描。</p>
+<h4 id="uhf静噪squelch-uhf">UHF静噪（Squelch UHF）</h4>
+<p>本设置控制70cm波段默认的模拟信道或VFO静噪等级，默认45%。</p>
+<h4 id="220m静噪squelch-220">220M静噪（Squelch 220）</h4>
+<p>同上，控制220MHz段默认模拟信道或VFO静噪等级，默认45%。</p>
+<h4 id="vhf静噪squelch-vhf">VHF静噪（Squelch VHF）</h4>
+<p>同上，控制2m段默认模拟信道或VFO静噪等级，默认45%。</p>
+<h4 id="ptt保持ptt-latch">PTT保持（PTT Latch）</h4>
+<p>当本功能开启时，按压PTT可以在发射与接收之间切换。所以您不需要一直按住PTT以发射。</p>
+<p><em>请注意 :</em> 为了避免在不知情的情况下持续发射，PTT保持功能仅在超时计时器（TOT）已经启用的情况下才能使用。</p>
+<h4 id="热点模式hotspot">热点模式（Hotspot）</h4>
+<p><strong>热点模式并不支持DM-5R，因为在发射时，其电台硬件无法保证一个可靠的USB通信</strong></p>
+<p>本设置控制当连接到MMDVM主机时是否进入热点模式，这包括Pi-Star或BlueDV。</p>
+<p>可选项有：<br>
+<strong>Off</strong> 关闭，不用于热点模式<br>
+<strong>MMDVM</strong>  用于Pi-Star或其他MMDVM主机<br>
+<strong>BlueDV</strong> 用于BlueDV</p>
+<p>在MD730上，若想要使用热点模式，请按住 <strong>黑色侧键</strong> 并打开电源，电台会在 <strong>MMDVM</strong> 与 <strong>BlueDV</strong> 模式之间切换。</p>
+<h4 id="发射别名ta-tx">发射别名（TA Tx）</h4>
+<p>开启别名数据发射功能。</p>
+<p><em>请注意 :</em> 别名接收功能无论何时总在工作。请不要因为没有接收到别名就打开这个功能，本功能并不控制别名接收功能！</p>
+<p>别名数据会使用写频软件中“Boot Item”定义的“Line1”与“Line2”进行发射，两行之间没有空格。</p>
+<p><em>请注意 :</em> 在摩托罗拉系统的中继台与网络中使用本功能会造成各种问题。请将本功能尽量用于直频或Brandmeister等支持别名数据的网络通联。</p>
+<h4 id="允许单呼allow-pc">允许单呼（Allow PC）</h4>
+<p>允许接收单呼</p>
+<h3 id="显示设定display-options">显示设定（Display Options）</h3>
+<p><img src="file:///e:\GD77_clone\docs\media\display-options.png" alt=""></p>
+<h4 id="背光亮度brightness">背光亮度（Brightness）</h4>
+<p>本固件允许用户控制背光亮度，设置范围可以从0%~100%，其中10%~100%以10%步进调整，0%~10%以1%步进调整。<br>
+按压 <strong>左</strong> 或 <strong>右</strong> 方向键以更改设置，默认设置为100%</p>
+<h4 id="待机亮度min-bright">待机亮度（Min Bright）</h4>
+<p>本设置控制电台待机时的屏幕亮度，默认设置为0%，这意味着在电台待机时屏幕将不会开启背光。</p>
+<h4 id="对比度contrast">对比度（Contrast）</h4>
+<p>本固件允许用户修改屏幕对比度，较低的数值意味着更淡的文字显示，较高的数值意味着更黑的文字显示，但同时还会使屏幕背景变得更黑。</p>
+<h4 id="背光模式display-mode">背光模式（Display mode）</h4>
+<p>控制屏幕背光模式</p>
+<p><strong>Auto</strong> 自动，背光会根据不同事件而自动点亮，例如接收到信号或按压某个按键。</p>
+<p><strong>Squelch</strong> 静噪，背光会在静噪打开，或接收到DMR信号时点亮，在信号消失后延时关闭背光。该时间由背光延时计时器决定，最短不少于五秒。</p>
+<p><strong>Manual</strong> 手动，由用户开启或关闭背光。按压 <strong>黑色</strong> 侧键以打开或关闭背光。</p>
+<p><strong>None</strong> 无，不开启背光。</p>
+<h4 id="背光延时timeout">背光延时（Timeout）</h4>
+<p>背光延时计时器，用以控制背光在多久后关闭，默认无，即不会关闭。</p>
+<h4 id="显示颜色模式colour-mode">显示颜色模式（Colour mode）</h4>
+<p>本设置允许您将屏幕设置为反色或正常。反色为背景黑色，字母白色；正常为背景白色，字母黑色。</p>
+<p><em>请注意 :</em> 本功能并不能做到和MD760黑色液晶版本完全相同的效果，因为黑色液晶版本使用了与普通正常LCD不同的屏幕，因此其黑色背景色是原生的。</p>
+<h4 id="联系人显示顺序order">联系人显示顺序（Order）</h4>
+<p>本设置决定了联系人数据是按什么顺序查找的</p>
+<p><strong>Cc</strong> = 联系人列表<br>
+<strong>Db</strong> = 内置DMR ID数据库<br>
+<strong>TA</strong> = 别名数据</p>
+<p>默认顺序为 Cc/Db/TA，意味着当收到一个DMR ID时，电台首先会在联系人列表中查找对应联系人，再从写入的DMR ID数据库中查找，若都未找到且主叫别名数据存在，则会显示主叫别名。</p>
+<h4 id="联系人显示方式contact">联系人显示方式（Contact）</h4>
+<p>本设置控制了DMR呼号或名字等显示在屏幕上的位置。<br>
+可选项有：</p>
+<p><strong>1 Line</strong> 一行，仅使用屏幕中间一行显示呼号与名字，当显示超过16个字符的别名时，多余字母将被舍弃。</p>
+<p><strong>2 Lines</strong> 两行，呼号显示在屏幕中间一行，姓名以及其他信息显示在屏幕底部一行。本固件会根据空格自动切割呼号与姓名。</p>
+<p><strong>Auto</strong> 自动，若呼号与姓名不超过16个字符（即能完整显示在中间一行）则电台仅显示中间一行；若呼号姓名或别名等超过16个字符时，则显示两行。</p>
+<p>默认设置为<strong>1 Line</strong></p>
+<h3 id="声音设定sound-options">声音设定（Sound Options）</h3>
+<h4 id="超时警告timeout-beep">超时警告（Timeout beep）</h4>
+<p>本设置控制电台是否在超时定时器归零，或即将归零时时发出“滴~”的警告音。</p>
+<h4 id="警告音量beep-volume">警告音量（Beep volume）</h4>
+<p>本设置控制超时警告与其他提示音的音量。<br>
+可选从-24dB ~ 6dB 以 3dB 为步进进行调整。</p>
+<h4 id="dmr提示音dmr-beep">DMR提示音（DMR Beep）</h4>
+<p>本设置控制了接通DMR中继或结束发射时的提示音，可选项有：</p>
+<p><strong>Start</strong> 接通，仅当接通中继台时发出提示音<br>
+<strong>Stop</strong> 结束，仅当结束发射时发出提示音<br>
+<strong>None</strong> 无，不发出任何提示音<br>
+<strong>Both</strong> 两者都，接通与结束时都发出提示音</p>
+<p><em>请注意 :</em> 接通DMR中继台时发出的提示音是用于确认您已经成功唤醒了中继台，该提示音只会在您电台的扬声器中播放而不会同时以语音数据发射出去。</p>
+<h4 id="dmr麦克风增益dmr-mic">DMR麦克风增益（DMR mic）</h4>
+<p>本设置控制了DMR模式下的麦克风增益，更改本设置不会影响FM模式下的麦克风增益。<br>
+可选从 -33dB ~ 12dB 以 3dB 为步进进行调整。<br>
+默认设置为0dB，即与原装固件一致。</p>
+<h4 id="fm麦克风增益fm-mic">FM麦克风增益（FM mic）</h4>
+<p>本设置控制了FM模式下的麦克风增益。可选从-15 ~ 15 以 1 为步进进行调整，负值代表比原装固件更少的增益，零代表相同，正值则代表更多。</p>
+<p>顺带一提，由于参数的单位暂时无法确认，本设置参数没有单位。</p>
+<h4 id="vox阈值vox-threshold">VOX阈值（VOX threshold）</h4>
+<p>本设置决定了当VOX（声控发射）开启时触发电台发射的阈值。</p>
+<h4 id="vox延迟vox-tail">VOX延迟（VOX Tail）</h4>
+<p>本设置决定了当声音低于VOX阈值后多久电台才停止发射。</p>
+<h3 id="信道详细设置channel-details">信道详细设置（Channel Details）</h3>
+<p><img src="file:///e:\GD77_clone\docs\media\channel-details.png" alt=""></p>
+<h4 id="接收频率rx">接收频率（RX）</h4>
+<p>设置当前接收频率，也可使用数字键盘快速输入。</p>
+<h4 id="发射频率tx">发射频率（TX）</h4>
+<p>设置当前发射频率，可使用数字键盘快速输入。</p>
+<h4 id="模式mode">模式（Mode）</h4>
+<p>选择FM（模拟）或DMR（数字）。</p>
+<h4 id="色码color-code">色码（Color Code）</h4>
+<p>设置DMR使用的颜色码。</p>
+<h4 id="时隙timeslot">时隙（Timeslot）</h4>
+<p>设置DMR使用的时隙。</p>
+<h4 id="接收发射组txrx-grp">接收/发射组（Tx/RX Grp）</h4>
+<p>设置当前DMR信道指定了哪些接收/发射组。</p>
+<h4 id="发射哑音tx-ctcss-or-dcs">发射哑音（Tx CTCSS or DCS）</h4>
+<p>设置当前FM信道/VFO使用的发射哑音。</p>
+<h4 id="接收哑音rx-ctcss-or-dcs">接收哑音（Rx CTCSS or DCS）</h4>
+<p>设置当前FM信道/VFO使用的接收哑音。</p>
+<p><em>提示 :</em> 对于发射与接收哑音，长按 <strong>左</strong> 或 <strong>右</strong> 方向键可以连续跳转。按住 <strong>蓝色多功能键</strong> 再按压 <strong>左</strong> 或 <strong>右</strong> 方向键可直接跳转到CTCSS/DCS/DCSN开头或末尾。</p>
+<h4 id="带宽bandwidth">带宽（Bandwidth）</h4>
+<p>设置当前FM信道带宽，可选项有：25Khz, 12.5Khz。</p>
+<h4 id="步进step">步进（Step）</h4>
+<p>设置信道/VFO频率步进。</p>
+<h4 id="超时定时器tot">超时定时器（TOT）</h4>
+<p>打开或关闭发射超时定时器。</p>
+<h4 id="跳过区域zone-skip">跳过区域（Zone Skip）</h4>
+<p>设置是否在扫描时跳过该信道所在区域。</p>
+<h4 id="跳过信道all-skip">跳过信道（All Skip）</h4>
+<p>设置是否在全频道扫描时跳过该信道。</p>
+<h4 id="声控发射vox">声控发射（VOX）</h4>
+<p>设置是否打开声控发射。</p>
+<h4 id="保存对信道的更改">保存对信道的更改</h4>
+<p>按压 <strong>绿色</strong> 按键以确认更改。</p>
+<p>按压 <strong>蓝色多功能键+绿色</strong> 组合键以保存信道/VFO更改至电台的配置文件。</p>
+<p>按压 <strong>红色</strong> 按键以取消更改并退出。</p>
+<h3 id="致谢credits">致谢（Credits）</h3>
+<p><img src="file:///e:\GD77_clone\docs\media\credits.png" alt=""></p>
+<p>显示参与本固件编写的开发者详细名字与呼号</p>
+<p>若将来有更多开发者贡献在这个项目中，他们的名字会被添加进去，按压 <strong>下</strong> 方向键以查看更多。</p>
+<p>到本章节为止，关于电台所有设置以及选项已基本解释完毕。<br>
+这里是翻译BH4ESK与校对BG5IPF，感谢您认真阅读本指南。</p>
+<h2 id="发起或接收单呼">发起或接收单呼</h2>
+<h3 id="想要发起单呼的话">想要发起单呼的话</h3>
+<p>在任意信道或VFO界面：</p>
+<ol>
+<li>按压数字键盘井号键两次进入单呼ID输入界面，屏幕上部显示“PC entry”。</li>
+<li>输入想要呼叫的DMR ID，例如5053238。</li>
+<li>按压<strong>绿色</strong>按键确认，或按压<strong>红色</strong>按键退出。</li>
+</ol>
+<p><em>请注意 :</em> 若您在输入ID时输错了一位，按压<strong>左</strong>方向键可以删除一位数字。</p>
+<p>若您输入的DMR ID在内置的数据库内，对应的呼号与名字会显示在屏幕上。</p>
+<p>若ID不在数据库内，则只会显示ID号码本身。</p>
+<p><strong>此时电台已进入单呼模式。</strong></p>
+<p>若想回到原来的模式，有以下三个方法：</p>
+<ol>
+<li>
+<p>按压 <strong>蓝色多功能键+红色</strong> 组合键。</p>
+</li>
+<li>
+<p>按压 <strong>左</strong> 或 <strong>右</strong> 方向键以切换到其他通话组。</p>
+</li>
+<li>
+<p>按压数字键盘井号键，并输入通话组代码，按压 <strong>绿色</strong> 按键确认。</p>
+</li>
+</ol>
+<p><em>请注意 :</em> 当您处于单呼模式时，通过菜单切换信道或VFO都不会使您退出单呼模式。</p>
+<h3 id="当接收到一个单呼时">当接收到一个单呼时</h3>
+<p>当您接收到一个单呼时，电台会显示以下界面。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\accept-call.png" alt=""></p>
+<p>屏幕中间会显示主叫呼号与姓名（或ID）</p>
+<p>若想要使电台接受单呼并呼回主叫电台，请按 <strong>绿色</strong> 按键以接受；您可以按 <strong>红色</strong> 按键或不理会该提示以拒绝本次呼叫。</p>
+<p>若您接收了此次呼叫，则电台会自动切换至单呼模式，同时显示对方的呼号，名字等信息，等待您发射。界面如下：</p>
+<p><img src="file:///e:\GD77_clone\docs\media\private-call.png" alt=""></p>
+<p>当您的单呼操作结束后，按压 <strong>蓝色功能键+红色</strong> 组合键可以回到之前的通话组。（或上一节描述的三种方法之一种）</p>
+<h2 id="热点模式hotspot-mode">热点模式（Hotspot mode）</h2>
+<p><strong>重要信息</strong></p>
+<p><strong>热点模式目前不支持宝峰DM5R，因为在DM5R发射时无法保证稳定的USB通信</strong></p>
+<ul>
+<li>在使用热点模式的时候，连接电台与主机的USB线 <strong>必须</strong> 进行适当保护以避免射频干扰，否则在电台发射时可能会造成USB连接被重置，进而导致热点模式停止工作。</li>
+<li><strong>不要</strong> 使用原机的天线进行热点模式操作，这样造成的射频干扰问题没法简单的用一个磁环来解决。</li>
+<li>连接一个外部天线。</li>
+<li>在USB线缆两端加个磁环以保护线缆免受射频干扰。</li>
+<li>如果您使用树莓派作为主机，请使用一个封闭的铁壳保护树莓派。</li>
+</ul>
+<p>当您使用USB写频线连接到一个MMDVM主机，例如PiStar时，电台就可作为一个DMR语音热点工作。</p>
+<p><em>请注意 :</em> 热点模式同时也兼容类似于BlueDV这样的软件，但也有可能无法使用。</p>
+<p>想要使用热点模式的话，请先使用写频线连接电台与主机，如图。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\hotspot-connections.jpg" alt=""></p>
+<p>热点模式也支持树莓派Zero/Zero W，不过您可能需要一条OTG线缆。</p>
+<p>在PiStar配置界面，Radio/Modem Type 一栏选择 “OpenGD77 DMR hotspot (USB)”</p>
+<p><img src="file:///e:\GD77_clone\docs\media\pistar-configuration.png" alt=""></p>
+<p>若您的PiStar并没有这个选项，请更新您的PiStar。</p>
+<p>当您正确连接后，按住电台的 <strong>黑色</strong> 侧键并打开电源。若PiStar配置正确，您电台屏幕的顶部会显示 “Hotspot” 以提示您已进入热点模式，同时电池电量、色码、功率和接收频率也都会显示，如图。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\hotspot-mode.jpg" alt=""></p>
+<p>若电台没有进入热点模式，重启电台和PiStar并重试。</p>
+<p>如果此时电台还无法进入热点模式，请检查USB连接。</p>
+<p><em>请注意 :</em> 默认情况下PiStar会将电台功率配置为“100”，您可以在专家模式下的MMDVMHost settings更改。</p>
+<p>“100”的设定代表了PiStar期望电台输出100%的功率，对于您的电台来说也就是5W满功率输出。显然的，您手中的电台在设计时并未考量长时间、高功率、持续发射的工况。</p>
+<p>您的电台所支持的满功率持续发射时间，会根据不同的操作环境，例如室内温度、天线驻波等等而有所变化。</p>
+<p>设置一个适当的发射功率并确保电台不会过热或烧毁是您自己的责任。</p>
+<p>为了保护电台，若PiStar向本固件汇报了“100”的功率设定，则电台会认为您没有正确配置PiStar并忽略该功率设定。此时固件会使用普通模式下您设置的功率进行发射。</p>
+<p>若PiStar向本固件汇报了任何其他功率设定（例如“50”），则固件会选择对应最接近的功率进行发射。
+以“50”为例，即5W的50%，等于2.5W，最接近这个值的功率设定是4W，因此电台会以4W进行发射。</p>
+<table>
+<thead>
+<tr>
+<th>电台发射功率</th>
+<th>PiStar RFLevel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50mW</td>
+<td>1</td>
+</tr>
+<tr>
+<td>250mW</td>
+<td>5</td>
+</tr>
+<tr>
+<td>500mW</td>
+<td>10</td>
+</tr>
+<tr>
+<td>750mW</td>
+<td>15</td>
+</tr>
+<tr>
+<td>1W</td>
+<td>20</td>
+</tr>
+<tr>
+<td>2W</td>
+<td>40</td>
+</tr>
+<tr>
+<td>4W</td>
+<td>80</td>
+</tr>
+<tr>
+<td>5W</td>
+<td>99</td>
+</tr>
+<tr>
+<td>5W++</td>
+<td>不可用</td>
+</tr>
+</tbody>
+</table>
+<p>由PiStar指定的接收频率会显示在屏幕底部。</p>
+<p><em>请注意 :</em> 在PiStar中请不要设置发射/接收频偏，因为您的电台不需要任何频偏设置，且任何频偏都会如实反映在接收频率上，因为PiStar实际上会发送已偏移的频率至您的电台。</p>
+<p>当您的电台接收到一个射频DMR信号时，机器顶部的指示灯会亮起绿色，主叫呼号及名称（或DMR ID，如果没有查询到ID对应的呼号数据的话）、通话组、接收频率都会显示在电台屏幕上。</p>
+<p><img src="file:///e:\GD77_clone\docs\media\hotspot-rx.jpg" alt=""></p>
+<p>当PiStar接收到来自网络的信号并触发您的电台进入发射时，机器顶部的指示灯会亮起红色，屏幕上同样会显示主叫呼号及名称/DMR ID，以及发射频率。</p>
+<h2 id="重设电台各项设定">重设电台各项设定</h2>
+<p>按住电台侧边的 <strong>蓝色多工能键</strong> 并打开电台可以恢复各项设定到默认状态。</p>
+<p>按住电台侧边的 <strong>蓝色多工能键+上方向键+下方向键</strong> 并打开电台可以清除自定义的开机画面和开机声音。</p>
+<p>在MD730上，按住电台侧边的 <strong>蓝色多工能键+橙色</strong> 并打开电台可以清除自定义的开机声音。</p>
+<h2 id="关于md730的操作方式">关于MD730的操作方式</h2>
+<p>若您要配合MD730使用本固件，<strong>必须</strong> 使用写频软件写入语音提示。若您不写入语音提示，则电台不会发出任何提示音，这样的情况下几乎无法使用MD730.</p>
+<p>请参阅相关章节以了解如何写入语音提示。</p>
+<p>MD730在机顶有一个音量/开关钮与一个16位置的旋钮。这个16位置的旋钮用于选择当前区域的信道。尽管新版写频软件允许您在一个区域内写入多达80个信道，但是MD730只能访问前16个信道，我们推荐配合MD730使用时尽量将每个区域信道控制在16个以内。</p>
+<p>MD730除了没有屏幕与键盘区以外，其侧边按键与MD760一样，在此不赘述。</p>
+<p>本固件对于MD730的使用提出了“控制模式”概念。在不同“控制模式”中黑色与蓝色按键各自拥有不同的功能，通过按压机顶 <strong>橙色</strong> 按键可以在不同模式之间切换。</p>
+<h3 id="md730-信道通话组模式">MD730 信道/通话组模式</h3>
+<p>本模式的语音提示是 &quot;Channel mode&quot;.<br>
+在本模式中，黑色与蓝色按键用于浏览当前信道以及其指定通话组。</p>
+<h3 id="md730-扫描模式">MD730 扫描模式</h3>
+<p>本模式与普通版本固件中的信道扫描一样。按压黑色侧键可以开始或结束扫描。</p>
+<h3 id="md730-时隙模式">MD730 时隙模式</h3>
+<p>在本模式下按压黑色或蓝色侧键可以在时隙1与时隙2之间切换。</p>
+<h3 id="md730-色码模式">MD730 色码模式</h3>
+<p>在本模式下，按压黑色侧键可以使色码递增，按压蓝色按键可以递减。</p>
+<h3 id="md730-dmr过滤模式">MD730 DMR过滤模式</h3>
+<p>在本模式下，按压黑色侧键可以向上更改DMR模式的过滤设置，按压蓝色侧键则向下更改。请查看 <a href="#dmr%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%BF%87%E6%BB%A4%E8%AE%BE%E7%BD%AE">DMR模式的过滤设置</a></p>
+<h3 id="md730-区域模式">MD730 区域模式</h3>
+<p>在本模式下，按压黑色侧键可以选择上一个区域，按压蓝色侧键则选择下一个区域。</p>
+<h3 id="md730-功率模式">MD730 功率模式</h3>
+<p>在本模式下，按压黑色侧键可以提高一档功率，按压蓝色侧键可以减少一档功率。</p>
+<p><em>请注意 :</em> 与之前所说一致，功率设定数值仅在您校准了功率之后才会准确。</p>
+<h1 id="关于opengd77-cps写频软件的说明">关于OpenGD77 CPS写频软件的说明</h1>
+<blockquote>
+<p>*译者注：关于写频软件内容较多，翻译工作正在进行。</p>
+</blockquote>
+
+    </body>
+    </html>

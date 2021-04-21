@@ -1,0 +1,31 @@
+\usepackage{enumitem}
+\setlistdepth{9}
+
+\setlist[itemize,1]{label=$\bullet$}
+\setlist[itemize,2]{label=$\circ$}
+\setlist[itemize,3]{label=$\hbox{\rule{.6ex}{.6ex}}$}
+\setlist[itemize,4]{label=-}
+\setlist[itemize,5]{label=$\cdot$}
+\setlist[itemize,6]{label=$\triangleright$}
+\setlist[itemize,7]{label=$\odot$}
+\setlist[itemize,8]{label=$\rightarrow$}
+\setlist[itemize,9]{label=$\otimes$}
+
+\renewlist{itemize}{itemize}{9}
+
+\usepackage{sectsty}
+%%\sectionfont{\clearpage}
+%%\sectionfont{\underline\clearpage}
+\sectionfont{\LARGE\clearpage}
+
+\usepackage{float}
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {
+    \expandafter\origfigure\expandafter[H]
+} {
+    \endorigfigure
+}
+
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}

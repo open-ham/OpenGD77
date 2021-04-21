@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirmwareLoader", "FirmwareLoader.csproj", "{58D9F832-3239-44CD-975A-9F17A3A6A74C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58D9F832-3239-44CD-975A-9F17A3A6A74C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D9F832-3239-44CD-975A-9F17A3A6A74C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D9F832-3239-44CD-975A-9F17A3A6A74C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D9F832-3239-44CD-975A-9F17A3A6A74C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,25 @@
+# you need to add your user to  usbmux group firstly and optionaly to the uucp (no needed for firmware update)
+# sudo gpasswd -a $YORUSERNAME  usbmux
+# sudo gpasswd -a $YORUSERNAME  uucp
+# 
+# USB rules for GD-77
+# Place this in /etc/udev/rules.d/ to let all users talk to the radios by USB.
+
+#
+SUBSYSTEM=="usb", ATTRS{idVendor}=="15a2", ATTRS{idProduct}=="0073", MODE="0666", GROUP="usbmux"
+
+# HIDAPI/libusb
+SUBSYSTEM=="usb", ATTRS{idVendor}=="15a2", ATTRS{idProduct}=="0073", MODE="0666", GROUP="usbmux"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="0094", MODE="0666", GROUP="usbmux"
+
+# HIDAPI/hidraw
+KERNEL=="hidraw*", ATTRS{idVendor}=="15a2", ATTRS{idProduct}=="0073", MODE="0666", GROUP="usbmux"
+KERNEL=="hidraw*", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="0094", MODE="0666", GROUP="usbmux"
+
+# HIDAPI/hiddev
+## We need to unbind this device, otherwise LibUsb will fail to SetConfiguration() and ClaimInterface()
+# For Bootloader (usbhid)
+KERNEL=="hiddev*", ATTRS{idVendor}=="15a2", ATTRS{idProduct}=="0073", MODE="0666", GROUP="usbmux", RUN+="/bin/bash -c 'ID=$(IFS=/; read -a array <<< %p; echo ${array[-3]}); echo $ID > /sys/bus/usb/drivers/usbhid/unbind'"
+
+# OpenGD77
+KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", ATTRS{idVendor}=="1fc9", ATTRS{idProduct}=="0094", MODE="0666", GROUP="uucp", SYMLINK+="OpenGD77"

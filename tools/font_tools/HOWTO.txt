@@ -1,0 +1,180 @@
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*   GFXfont_converter    -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+This tool converts Adafruit GFX font file to XBM file for each and every single glyph part of the font file.
+It needs to be edited (converter.c), then recompiled, to extract glyphs for specific font file.
+
+Include the font file, then set the 'GFXfont *gfxFont' pointer to the font structure data:
+
+Here is the example for the font that was used as framework for the 16x32.
+
+converter.c:
+------- snip/snip -------
+// Used as 16x32
+#include "roboto_mono_bold_26.h"
+
+GFXfont *gfxFont = (GFXfont *)&Roboto_Mono_Bold_26; //Roboto_Mono_Light_14;
+------- snip/snip -------
+
+roboto_mono_bold_26.h:
+------- snip/snip -------
+const uint8_t Roboto_Mono_Bold_26Bitmaps[] PROGMEM = {
+------- snip/snip -------
+
+No need to take care of the PROGMEM and such thing. Include the header file then recompile:
+
+gcc -Wall -O2 -static -s -o converter converter.c
+
+
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*     font_converter     -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+UC1701_font_tool and UC1701_font_SaM.sh are complementary tools to extract and convert fonts from the OpenGD77 charset file.
+
+- First, you need a fresh copy of the UC1701_charset.h file. Then, you need to compile UC1701_font_tool.c:
+  gcc -Wall -O2 -static -s -o UC1701_font_tool UC1701_font_tool.c
+
+
+- To extract the fonts:
+  ./UC1701_font_tool -e
+  or 
+  ./UC1701_font_tool --export
+
+  It will generate a single XBM file per font (all fonts are extracted at once):
+  font_6x8-exported.xbm, font_6x8_bold-exported.xbm, font_8x8-exported.xbm, font_8x16-exported.xbm and font_16x32-exported.xbm
+
+
+- Then, you need to use UC1701_font_SaM.sh to split and rotate each glyph for the font file passed as argument:
+  ./UC1701_font_SaM.sh -s font_6x8-exported.xbm
+  or
+  ./UC1701_font_SaM.sh --split font_6x8-exported.xbm
+  
+  You can specify multiple times the split command line argument.
+
+  It will create a folder with the name of the font, and create glyph XBM files (part-032.xbm to part-255.xbm).
+  The numbering matches the OpenGD77 font charmap.
+
+
+- Now, use you prefered tool (e.g. Gimp) to modify the glyph(s), then export as XBM the modified ones.
+
+
+- Once your done, you need to use UC1701_font_SaM.sh script to merge all the glyphs:
+  ./UC1701_font_SaM.sh -m font_6x8-exported
+  or
+  ./UC1701_font_SaM.sh --merge font_6x8-exported
+
+  As for the split command line option, you can specify multiple font directories to merge at once.
+  The merge process will generate one XBM file per font, using the following naming scheme:
+  <font_dir>-to_import.xbm
+
+
+- As the last convertion, you need to use UC1701_font_tool to convert the XBM font file to something usable by the OpenGD77:
+  ./UC1701_font_tool -i <font_dir>-to_import.xbm
+  or 
+  ./UC1701_font_tool --import <font_dir>-to_import.xbm
+
+  As for the split and merge command line option, you can specify multiple font files once.
+
+  A C header file will be generated for each imported fonts, following this file name scheme:
+  <<font_dir>-to_import>-to_import.h
+
+
+- As the last step, you need to copy the content of the header files in UC1701_charset.h, and you need to cleanup the font file data name, e.g:
+  const uint8_t font_6x8-exported-to_import[] = {
+  by
+  const uint8_t font_6x8[] = {
+
+
+
+Sorry for the long text, but the process is easy, you can use your mouse to copy and paste the outputs of those two tools:
+
+--- Export ---
+./UC1701_font_tool -e <RET>
+
+Exporting font 'font_6x8' to XBitmap file 'font_6x8-exported.xbm'
+File 'font_6x8-exported.xbm' successfuly saved.
+
+Exporting font 'font_6x8_bold' to XBitmap file 'font_6x8_bold-exported.xbm'
+File 'font_6x8_bold-exported.xbm' successfuly saved.
+
+Exporting font 'font_8x8' to XBitmap file 'font_8x8-exported.xbm'
+File 'font_8x8-exported.xbm' successfuly saved.
+
+Exporting font 'font_8x16' to XBitmap file 'font_8x16-exported.xbm'
+File 'font_8x16-exported.xbm' successfuly saved.
+
+Exporting font 'font_16x32' to XBitmap file 'font_16x32-exported.xbm'
+File 'font_16x32-exported.xbm' successfuly saved.
+
+
+--- Split ---
+./UC1701_font_SaM.sh -s font_6x8-exported.xbm -s font_6x8_bold-exported.xbm -s font_8x8-exported.xbm -s font_8x16-exported.xbm -s font_16x32-exported.xbm <RET>
+
+Font Directory: font_6x8-exported
+Character size: 6x8
+Font file successfuly splitted into font_6x8-exported.
+
+Font Directory: font_6x8_bold-exported
+Character size: 6x8
+Font file successfuly splitted into font_6x8_bold-exported.
+
+Font Directory: font_8x8-exported
+Character size: 8x8
+Font file successfuly splitted into font_8x8-exported.
+
+Font Directory: font_8x16-exported
+Character size: 8x16
+Font file successfuly splitted into font_8x16-exported.
+
+Font Directory: font_16x32-exported
+Character size: 16x32
+Font file successfuly splitted into font_16x32-exported.
+
+
+--- Edit ---
+Gimp or whatever you like
+
+
+--- MERGE ---
+./UC1701_font_SaM.sh -m font_6x8-exported -m font_6x8_bold-exported -m font_8x8-exported -m font_8x16-exported -m font_16x32-exported
+
+Font file font_6x8-exported-to_import.xbm successfuly created.
+
+Font file font_6x8_bold-exported-to_import.xbm successfuly created.
+
+Font file font_8x8-exported-to_import.xbm successfuly created.
+
+Font file font_8x16-exported-to_import.xbm successfuly created.
+
+Font file font_16x32-exported-to_import.xbm successfuly created.
+
+
+--- Import ---
+./UC1701_font_tool -i font_6x8-exported-to_import.xbm -i font_6x8_bold-exported-to_import.xbm -i font_8x8-exported-to_import.xbm -i font_8x16-exported-to_import.xbm -i font_16x32-exported-to_import.xbm
+
+Importing XBitmap font 'font_6x8-exported-to_import.xbm'...
+Exporting font as UC1701 formatted array to 'font_6x8-exported-to_import-to_import.h'
+File 'font_6x8-exported-to_import-to_import.h' successfuly saved.
+
+Importing XBitmap font 'font_6x8_bold-exported-to_import.xbm'...
+Exporting font as UC1701 formatted array to 'font_6x8_bold-exported-to_import-to_import.h'
+File 'font_6x8_bold-exported-to_import-to_import.h' successfuly saved.
+
+Importing XBitmap font 'font_8x8-exported-to_import.xbm'...
+Exporting font as UC1701 formatted array to 'font_8x8-exported-to_import-to_import.h'
+File 'font_8x8-exported-to_import-to_import.h' successfuly saved.
+
+Importing XBitmap font 'font_8x16-exported-to_import.xbm'...
+Exporting font as UC1701 formatted array to 'font_8x16-exported-to_import-to_import.h'
+File 'font_8x16-exported-to_import-to_import.h' successfuly saved.
+
+Importing XBitmap font 'font_16x32-exported-to_import.xbm'...
+Exporting font as UC1701 formatted array to 'font_16x32-exported-to_import-to_import.h'
+File 'font_16x32-exported-to_import-to_import.h' successfuly saved.
+
+--------------------
+--- You're done. ---
+--------------------
