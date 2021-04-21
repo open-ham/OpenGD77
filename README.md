@@ -7,7 +7,7 @@ Firmware for DMR transceivers using the NXP MK22 MCU, AT1846S RF chip and HR-C60
 Unfortunately due to unforseen problems with the software license, it is no longer possible to create and distribute the firmware. 
 
 This is basically because the firmware is comprised of approximately 30% sealed binary from the official Raddioity firmware, which makes it incompatible with the license.
-The 30% sealed binary is equired to sidestep  potential license issues with the DMR codec
+The 30% sealed binary is required to sidestep  potential license issues with the DMR codec
 
 As the continued development is not possible, all files except the User Guide and technical docs and some tools and drivers have been removed.
 
