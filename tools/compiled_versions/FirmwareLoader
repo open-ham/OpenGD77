@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+let ret=0
+
+OS=`uname -s`
+
+FIRMWARE="$(echo ${@:2:1})"
+
+#Extract destination platform
+DM1801=$(echo "${@:3:1})" | grep -o DM-1801)
+GD77S=$(echo "${@:3:1})" | grep -o GD-77S)
+RD5R=$(echo "${@:3:1})" | grep -o RD-5R)
+GD77=""
+
+# Due to similarity between 77 and 77S, first check if it wasn't GD-77S, then
+# check for GD-77 if it has failed.
+if [ -z "$GD77S" ]; then
+    GD77=$(echo "${@:3:1})" | grep -o GD-77)
+fi
+
+case "$OS" in
+    "Linux")
+	mono "$1/FirmwareLoader-Linux.exe" $GD77 $DM1801 $GD77S $RD5R $FIRMWARE
+	ret=$?
+	;;
+    "Darwin")
+	# doesn't even exist yet. Use Python script instead ?
+	#mono "$1/FirmwareLoader-Darwin.exe" ${@:2}
+	ret=$?
+	;;
+    *)
+	ret=1
+	;;
+esac
+
+exit $ret
