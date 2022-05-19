@@ -1,28 +1,34 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-################################################################################################################################################
+########################################################################
 #
 # GD-77 Firmware uploader. By Roger VK3KYY and Daniel F1RMB
 # 
 #
-# This script has only been tested on Windows and Linux, it may or may not work on OSX
+# This script has only been tested on Windows and Linux, 
+# it may or may not work on OSX
 #
 # On Windows,..
-# the driver the system installs for the GD-77, which is the HID driver, needs to be replaced by the LibUSB-win32 using Zadig
+# the driver the system installs for the GD-77, which is the HID driver, 
+# needs to be replaced by the LibUSB-win32 using Zadig
 # for USB device with idVendor=0x15a2, idProduct=0x0073
-# Once this driver is installed the CPS and official firmware loader will no longer work as they can't find the device
-# To use the CPS etc again, use the DeviceManager to uninstall the driver associated with idVendor=0x15a2, idProduct=0x0073 (this will appear as a libusb-win32 device)
+# Once this driver is installed the CPS and official firmware loader 
+# will no longer work as they can't find the device
+# To use the CPS etc again, use the DeviceManager to uninstall 
+# the driver associated with idVendor=0x15a2, idProduct=0x0073 
+# (this will appear as a libusb-win32 device)
 # Then unplug the GD-77 and reconnect, and the HID driver will be re-installed
 #
 #
-# On Linux, depending of you distro, you need to install a special udev rule to automatically unbind the USB HID device to usbhid driver.
+# On Linux, depending of you distro, you need to install a 
+# special udev rule to automatically unbind the USB HID device to usbhid driver.
 #
 #
 # You also need python3-usb, enum34 and urllib3
 #
-################################################################################################################################################
+########################################################################
 
-######################### Error codes #########################
+############################# Error codes ##############################
 #
 # -1:  Missing firmware file
 # -2:  Wrong SGL file format
@@ -37,7 +43,7 @@
 # -11: Unable to retrieve firmware list
 # -99: Unsupported GD-77S (will be removed in the futur)
 #
-###############################################################
+########################################################################
 
 import usb
 import getopt, sys
@@ -303,11 +309,12 @@ def sendAndCheckResponse(dev, cmd, resp):
         return False
 
  
-##############################
+########################################################################
 # Create checksum data packet
-##############################
+########################################################################
 def createChecksumData(buf, startAddress, endAddress):
-    #checksum data starts with a small header, followed by the 32 bit checksum value, least significant byte first
+    # checksum data starts with a small header, 
+    # followed by the 32 bit checksum value, least significant byte first
     checkSumData = [ 0x45, 0x4e, 0x44, 0xff, 0xDE, 0xAD, 0xBE, 0xEF ]
     cs = 0
     
@@ -331,9 +338,9 @@ def updateBlockAddressAndLength(buf, address, length):
     return buf
 
 
-#####################################################
-# Open firmware file on disk and sent it to the GD-77
-###########################################b##########
+########################################################################
+# Open firmware file on disk and send it to the GD-77
+########################################################################
 def sendFileData(fileBuf, dev):
     dataHeader = [0x00] * (0x20 + 0x06)
     BLOCK_LENGTH = 1024 #1k
@@ -397,9 +404,9 @@ def sendFileData(fileBuf, dev):
             print("")
     return True
 
-#####################################################
+########################################################################
 # Probe connected model
-###########################################b##########
+########################################################################
 def probeModel(dev):
     commandLetterA = [ 0x41 ] # 'A'
     command0       = [[ 0x44, 0x4f, 0x57, 0x4e, 0x4c, 0x4f, 0x41, 0x44 ], [ 0x23, 0x55, 0x50, 0x44, 0x41, 0x54, 0x45, 0x3f ]] # 'DOWNLOAD'
@@ -426,9 +433,10 @@ def probeModel(dev):
 
     return SGLFormatOutput.UNKNOWN
 
-###########################################################################################################################################
-# Send commands to the GD-77 to verify we are the updater, prepare to program including erasing the internal program flash memory
-###########################################################################################################################################
+########################################################################
+# Send commands to the GD-77 to verify we are the updater, 
+# prepare to program including erasing the internal program flash memory
+########################################################################
 def sendInitialCommands(dev, encodeKey):
     commandLetterA      =[ 0x41] #A
     command0            =[[0x44,0x4f,0x57,0x4e,0x4c,0x4f,0x41,0x44],[0x23,0x55,0x50,0x44,0x41,0x54,0x45,0x3f]] # DOWNLOAD
@@ -474,9 +482,9 @@ def sendInitialCommands(dev, encodeKey):
         commandNumber = commandNumber + 1
     return True
 
-###########################################################################################################################################
+########################################################################
 #
-###########################################################################################################################################
+########################################################################
 def checkForSGLAndReturnEncryptedData(fileBuf):
     header_tag = list("SGL!")
     headerModel = []
@@ -524,9 +532,9 @@ def checkForSGLAndReturnEncryptedData(fileBuf):
     print("ERROR: SGL! header is missing.")
     return None, None, None
 
-###########################################################################################################################################
-#
-###########################################################################################################################################
+########################################################################
+# Print usage menu for options
+########################################################################
 def usage():
     print("Usage:")
     print("       " + ntpath.basename(sys.argv[0]) + " [OPTION]")
@@ -542,9 +550,9 @@ def usage():
     print("    -L, --language=<LANG>          : Download or list language specific version (e.g. JA for Japanese)")
     print("")
 
-#####################################################
+########################################################################
 # Main function.
-#####################################################
+########################################################################
 def main():
     global outputFormat
     sglFile = "OpenGD77.sgl"
